@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1 class="display-4 lead">User Dashboard</h1>
+    <h3 class="lead">User:</h3>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h4>22</h><h6>Posts</h6>
+                </div>
+                <div class="card-footer">
+                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-primary">
+                <div class="card-body">
+                    <h4>13</h4><h6>Followers</h6>
+                </div>
+                <div class="card-footer">
+                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info">
+                <div class="card-body">
+                    <h4>7</h4><h6>Following</h6>
+                </div>
+                <div class="card-footer">
+                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock %}
