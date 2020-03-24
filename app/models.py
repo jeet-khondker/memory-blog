@@ -28,6 +28,23 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# Post Table
+class Post(db.Model):
+
+    __tablename__ = "MEMORYBLOG_TRANSACTION_POST"
+
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(100), nullable = False)
+    body = db.Column(db.String(150))
+    created_datetime = db.Column(db.DateTime, index = True, default = datetime.utcnow)
+    updated_datetime = db.Column(db.DateTime)
+    image = db.Column(db.String(20))
+    video = db.Column(db.String(20))
+    user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), nullable = False)
+
+    def __repr__(self):
+        return "<Post {}>".format(self.title)
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
