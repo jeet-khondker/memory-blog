@@ -30,18 +30,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                 </li>
-                
+                {% if current_user.is_anonymous %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                     </li>
-                
+                {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">User First Name & Last Name</a>
+                        <a class="nav-link" href="{{ url_for('user', username = current_user.username) }}">{{ current_user.firstname }} {{ current_user.lastname }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
-                
+                {% endif %}
             </ul>
         </div>
     </nav>
