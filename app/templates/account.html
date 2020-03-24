@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="media">
+        <img class="rounded-circle" src="{{ photo }}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+            <p class="text-secondary">{{ current_user.email }}</p>
+        </div>
+    </div>
+{% endblock %}
