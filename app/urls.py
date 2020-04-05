@@ -4,6 +4,11 @@ from werkzeug.urls import url_parse
 from app.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
+from datetime import datetime
+
+@app.context_processor
+def inject_now():
+    return {'now': datetime.utcnow()}
 
 # Dashboard Route
 @app.route('/')

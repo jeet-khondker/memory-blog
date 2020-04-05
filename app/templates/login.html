@@ -1,26 +1,53 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1 class="text-center"><i class="fas fa-book"></i>&emsp;Memory Blog</h1>
-    <h4 class="text-center">Make It Your Memory</h4>
-    <form action="" method="POST" novalidate>
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Enter Username">
-            {% for error in form.username.errors %}
-            <span style="color: red;">{{ error }}</span>
-            {% endfor %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 left-middle-content">
+                    <h1 class="display-4 text-uppercase">Memory Blog</h1>
+                    <p class="lead">✅&emsp;Store Your Memories Forever</p>
+                    <p class="lead">✅&emsp;See What Others Have In Their Stories</p>
+                    <p class="lead">✅&emsp;Get Updates From Your Favorites</p>
+                    <hr>
+                    <div class="small text-center">Copyright &copy; PyTechnologies {{ now.year }}</div>
+                </div>
+                <div class="col-md-6 right-middle-content">
+
+                    <h1 class = "text-center"><i class="fas fa-user-lock"></i>&emsp;Login</h1>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }} text-center">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            
+                        {% endif %}
+                    {% endwith %}
+                    <form action="" method="POST" novalidate>
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="username" placeholder="Username">
+                            {% for error in form.username.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-check text-center">
+                            <input class="form-check-input" type="checkbox" value="{{ form.remember_me.data }}" name="remember_me">&emsp;Remember Me
+                        </div>
+                        <button type="submit" class="btn btn-block btn-outline-success">Login</button>
+                    </form>
+                    <p class="text-center">Already An User?&nbsp;<a class="btn btn-block btn-outline-primary" href="{{ url_for('register') }}">Register Now</a></p>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Enter Password">
-            {% for error in form.password.errors %}
-            <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="{{ form.remember_me.data }}" name="remember_me">&emsp;Remember Me
-        </div>
-        <button type="submit" class="btn btn-block btn-outline-success">Login</button>
-    </form>
-    <p>Already An User?&nbsp;<a class="btn btn-block btn-outline-primary" href="{{ url_for('register') }}">Register Now</a></p>
+    </div>
 {% endblock %}

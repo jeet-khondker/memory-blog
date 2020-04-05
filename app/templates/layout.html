@@ -20,7 +20,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/"><i class="fas fa-book"></i>&emsp;Memory Blog</a>
+        <a class="navbar-brand" href="/"><i class="fas fa-book"></i></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,34 +46,8 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                        <ul>
-                            {% for category, message in messages %}
-                                <div class="alert alert-{{ category }} text-center">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endwith %}
-    
-                {% block content %}{% endblock %}
-            </div>
-            <div class="col-md-4">
-                <div class="content-section">
-                    <ul>
-                        <li>List Of Categories</li>
-                        <li>Latest Posts</li>
-                    </ul>
-                </div>
-                   
-            </div>
-        </div>
-    </div>
+    {% block content %}{% endblock %}
+
     
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
