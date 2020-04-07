@@ -1,5 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from flask_wtf.file import FileField, FileAllowed
+from flask_login import current_user
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
 from wtforms.fields.html5 import DateField
 from app.models import User
@@ -32,5 +34,12 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email = email.data).first()
         if user is not None:
             raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
+
+class PostForm(FlaskForm):
+    title = StringField("Title", validators=[DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
+    body = TextAreaField("Body", validators=[DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
+    image = FileField("Upload Image", validators=[FileAllowed(["jpg", "png"])])
+    video = FileField("Upload Video", validators=[FileAllowed(["mp4", "mov"])])
+    submit = SubmitField("Post")
 
 

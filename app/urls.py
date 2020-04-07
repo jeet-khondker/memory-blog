@@ -1,9 +1,10 @@
 from app import app, db
+from PIL import Image
 from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Post
 from datetime import datetime
 
 @app.context_processor
@@ -15,8 +16,9 @@ def inject_now():
 @app.route("/dashboard")
 @login_required
 def dashboard():
+    posts = Post.query.all()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("dashboard.html", photo = photo, title = "Dashboard")
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts)
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
@@ -60,3 +62,8 @@ def user(username):
     user = User.query.filter_by(username = username).first_or_404()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("account.html", user = user, photo = photo, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
+
+@app.route("/post/<int:post_id>")
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template("post.html", title = post.title, post = post)

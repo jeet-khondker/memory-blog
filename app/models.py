@@ -3,6 +3,10 @@ from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 # User Table
 class User(UserMixin, db.Model):
 
@@ -36,15 +40,11 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(150))
-    created_datetime = db.Column(db.DateTime, index = True, default = datetime.utcnow)
+    created_datetime = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     updated_datetime = db.Column(db.DateTime)
     image = db.Column(db.String(20))
     video = db.Column(db.String(20))
     user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), nullable = False)
 
     def __repr__(self):
-        return "<Post {}>".format(self.title)
-
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+        return f"Post('{self.title}', '{self.created_datetime}')"
