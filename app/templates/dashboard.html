@@ -4,38 +4,44 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img class="rounded-circle" src="{{ photo }}">
-                <h1 class="display-4 lead">User Dashboard</h1>
-                <h3 class="lead">User: {{ current_user.firstname }} {{ current_user.lastname }}</h3>
+                <div class="content-section">
+                    <h1 class="display-4 lead">Dashboard</h1>
+                    <div class="media">
+                        <img class="rounded-circle account-img" src="{{ photo }}">
+                        <div class="media-body">
+                            <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+                        </div>
+                    </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card bg-warning">
-                            <div class="card-body">
-                                <h4>22</h><h6>Posts</h6>
-                            </div>
-                            <div class="card-footer">
-                                <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-primary">
-                            <div class="card-body">
-                                <h4>13</h4><h6>Followers</h6>
-                            </div>
-                            <div class="card-footer">
-                                <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card bg-warning">
+                                <div class="card-body">
+                                    <h3 style="font-family: 'Montserrat', sans-serif;">22</h3><h4 style="font-family: 'Montserrat', sans-serif;">Posts</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-info">
-                            <div class="card-body">
-                                <h4>7</h4><h6>Following</h6>
+                        <div class="col-md-4">
+                            <div class="card bg-primary">
+                                <div class="card-body">
+                                    <h3>13</h3><h4>Followers</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-info">
+                                <div class="card-body">
+                                    <h3>7</h3><h4>Following</h4>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-clock"></i>&emsp; Updated 5 minutes ago
+                                </div>
                             </div>
                         </div>
                     </div>
