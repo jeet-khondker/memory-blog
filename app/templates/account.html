@@ -5,12 +5,103 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content-section">
-                    <div class="media">
-                        <img class="rounded-circle account-img" src="{{ photo }}">
-                        <div class="media-body">
-                            <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
-                            <p class="text-secondary">Email:&emsp;{{ current_user.email }}</p>
-                            <p class="text-secondary">Born On:&emsp;{{ current_user.dob.strftime("%B %d") }}</p>
+                    <div class="row">
+                        <div class="media col-md-6">
+                            <img class="rounded-circle edit-account-img" src="{{ photo }}">
+                            <div class="media-body account-desc">
+                                <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+                                <p class="text-secondary">Email:&emsp;{{ current_user.email }}</p>
+                                <p class="text-secondary">Born On:&emsp;{{ current_user.dob.strftime("%B %d") }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <h1 class = "text-center"><i class="fas fa-edit"></i>&emsp;Edit Your Information</h1>
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                    
+                                        {% for category, message in messages %}
+                                            <div class="alert alert-{{ category }} text-center">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    
+                                {% endif %}
+                            {% endwith %}
+                            <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                            {{ form.hidden_tag() }}
+                                <div class="form-group row">
+                                <label for="username" class="col-md-3 col-form-label">Username</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="{{ current_user.username }}">
+                                </div>
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                                <div class="form-group row">
+                                <label for="firstname" class="col-md-3 col-form-label">First Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="{{ current_user.firstname }}">
+                                </div>
+                                {% for error in form.firstname.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                                <div class="form-group row">
+                                <label for="middlename" class="col-md-3 col-form-label">Middle Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="{{ current_user.middlename }}">
+                                </div>
+                                {% for error in form.middlename.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                                <div class="form-group row">
+                                <label for="lastname" class="col-md-3 col-form-label">Last Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="{{ current_user.lastname }}">
+                                </div>
+                                {% for error in form.lastname.errors %}
+                                    <span style="color: red;">{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                                <div class="form-group row">
+                                    <div class="input-group">
+                                        <label for="dob" class="col-md-3 col-form-label">Date Of Birth</label>&emsp;
+                                        <input class="datepicker" id="dob" name="dob" type="date" value="{{ current_user.dob.strftime('%Y-%m-%d') }}">
+                                    </div>
+                                    {% for error in form.dob.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-3 col-form-label">Email Address</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="email" placeholder="Email Address" value="{{ current_user.email }}">
+                                    </div>
+                                    {% for error in form.email.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="photo" class="col-md-3">Profile Picture</label>
+                                    <input type="file" id="photo" name="photo" class="col-md-9 form-control-file">
+                                    {% if form.photo.errors %}
+                                        {% for error in form.photo.errors %}
+                                            <span class="text-danger">{{ error }}</span></br>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                {{ form.submit(class="btn btn-block btn-outline-info") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="article-metadata">
+                            <h1 class = "text-center"><i class="fas fa-blog"></i>&emsp;Your Posts</h1>
                         </div>
                     </div>
                 </div>
