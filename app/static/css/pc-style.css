@@ -103,5 +103,10 @@ a.article-title:hover {
   margin-bottom: 16px;
 }
 
+.date-content {
+  font-size: 30px; 
+  font-weight: bolder;
+}
+
 
 

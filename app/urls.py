@@ -78,6 +78,7 @@ def save_photo(form_photo):
 @app.route("/user", methods = ["GET", "POST"])
 @login_required
 def user():
+    posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).all()
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.photo.data:
@@ -100,7 +101,7 @@ def user():
         form.dob.data = current_user.dob
         form.email.data = current_user.email
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("account.html", user = user, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
+    return render_template("account.html", user = user, posts = posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
 
 # Post Information Route
 @app.route("/post/<int:post_id>")
