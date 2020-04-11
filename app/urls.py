@@ -18,8 +18,9 @@ def inject_now():
 @login_required
 def dashboard():
     posts = Post.query.all()
+    total_posts = db.session.query(Post).count()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts)
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, total_posts = total_posts)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -103,8 +104,21 @@ def user():
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("account.html", user = user, posts = posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
 
-# Post Information Route
+# Post Information Route - READ
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template("post.html", title = post.title, post = post)
+
+# Add A Post Route - CREATE
+@app.route("/post/new", methods = ["GET", "POST"])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        new_post = Post(title = form.title.data, body = form.body.data, author = current_user)
+        db.session.add(new_post)
+        db.session.commit()
+        flash("Your Post Has Been Successfully Created!", "success")
+        return redirect(url_for("dashboard"))
+    return render_template("new_post.html", title = "New Post", form = form)

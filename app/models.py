@@ -39,11 +39,9 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
-    body = db.Column(db.String(150))
+    body = db.Column(db.String(1000))
     created_datetime = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     updated_datetime = db.Column(db.DateTime)
-    image = db.Column(db.String(20))
-    video = db.Column(db.String(20))
     user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), nullable = False)
 
     def __repr__(self):

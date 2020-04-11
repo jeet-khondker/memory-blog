@@ -59,11 +59,10 @@ class UpdateAccountForm(FlaskForm):
             if user is not None:
                 raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
 
+# Post Form
 class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
     body = TextAreaField("Body", validators=[DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
-    image = FileField("Upload Image", validators=[FileAllowed(["jpg", "png"])])
-    video = FileField("Upload Video", validators=[FileAllowed(["mp4", "mov"])])
     submit = SubmitField("Post")
 
 

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-section">
+                    <h1 class = "text-center"><i class="fas fa-plus"></i>&emsp;Add A Post</h1>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                            
+                        {% endif %}
+                    {% endwith %}
+                    <form action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" placeholder="Post Title">
+                            {% for error in form.title.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="body" placeholder="Post Content">
+                            {% for error in form.body.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-block btn-outline-info") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

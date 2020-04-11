@@ -38,6 +38,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                 </li>
+            </ul>
+            <ul class="navbar-nav">
                 {% if current_user.is_anonymous %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Login</a>
@@ -45,6 +47,9 @@
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('user', username = current_user.username) }}">{{ current_user.firstname }} {{ current_user.lastname }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('new_post') }}"><i class="fas fa-plus"></i>&nbsp;Create Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
