@@ -111,14 +111,21 @@ def post(post_id):
     return render_template("post.html", title = post.title, post = post)
 
 # Add A Post Route - CREATE
-@app.route("/post/new", methods = ["GET", "POST"])
+@app.route("/addPost", methods = ["POST"])
 @login_required
 def new_post():
-    form = PostForm()
-    if form.validate_on_submit():
-        new_post = Post(title = form.title.data, body = form.body.data, author = current_user)
-        db.session.add(new_post)
-        db.session.commit()
-        flash("Your Post Has Been Successfully Created!", "success")
-        return redirect(url_for("dashboard"))
-    return render_template("new_post.html", title = "New Post", form = form)
+
+    if request.method == "POST":
+        # Taking Form Data To Add A Post
+        post_title = request.form["title"]
+        post_content = request.form["body"]
+
+        new_post = Post(title = post_title, body = post_content, author = current_user)
+
+        try:
+            db.session.add(new_post)
+            db.session.commit()
+            flash("Your Post Has Been Successfully Created!", "success")
+            return redirect(url_for("dashboard"))
+        except:
+            flash("There was an issue in creating your blog post! Please try again later.")

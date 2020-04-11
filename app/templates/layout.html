@@ -49,13 +49,42 @@
                         <a class="nav-link" href="{{ url_for('user', username = current_user.username) }}">{{ current_user.firstname }} {{ current_user.lastname }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('new_post') }}"><i class="fas fa-plus"></i>&nbsp;Create Post</a>
+                        <!-- <a class="nav-link" href="{{ url_for('new_post') }}"><i class="fas fa-plus"></i>&nbsp;Create Post</a> -->
+                        <a type="button" class="nav-link" data-toggle="modal" data-target="#addPost"><i class="fas fa-plus"></i>&nbsp;Create Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                 {% endif %}
             </ul>
+
+            <!-- Add Post Popup Dialog Box -->
+            <div id="addPost" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="text-center modal-title"><i class="fas fa-plus"></i>&emsp;Add A Post</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url_for('new_post') }}" method="POST" autocomplete="off">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Post Title" name="title" required="1">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Post Content" name="body" required="1">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i>&emsp;Add A Post</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </nav>
 
