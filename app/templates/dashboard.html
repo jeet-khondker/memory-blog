@@ -71,17 +71,19 @@
                                 <div class="article-metadata">
                                     <a class="mr-2" href="{{ url_for('user', username = current_user.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
                                     <small class="text-muted">Posted On: {{ post.created_datetime.strftime('%Y-%m-%d') }}</small>
-                                    <div class="float-right-box">
-                                        <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}">Edit</a>
-                                        <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button">Delete</a>
-                                    </div>
+                                    {% if post.author == current_user %}
+                                        <div class="float-right-box">
+                                            <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
+                                            <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
+                                        </div>
+                                    {% endif %}
 
                                     <!-- Edit Post Item Popup Dialog Box -->
                                     <div id="editPost{{post.id}}" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="text-center modal-title">Edit Post</h4>
+                                                    <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ url_for('updatePost') }}" method="POST">

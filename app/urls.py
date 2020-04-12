@@ -1,7 +1,7 @@
 import os, secrets
 from app import app, db
 from PIL import Image
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from werkzeug.urls import url_parse
 from app.forms import LoginForm, RegistrationForm, PostForm, UpdateAccountForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -138,6 +138,10 @@ def new_post():
 def updatePost():
     if request.method == "POST":
         post = Post.query.get(request.form.get("id"))
+        
+        if post.author != current_user:
+            abort(403)
+
         post.title = request.form["title"]
         post.body = request.form["body"]
         post.updated_datetime = datetime.utcnow()
@@ -150,6 +154,9 @@ def updatePost():
 @app.route("/deletePost/<int:id>")
 def deletePost(id):
     post_to_delete = Post.query.get_or_404(id)
+
+    if post.author != current_user:
+        abort(403)
 
     try:
         db.session.delete(post_to_delete)
