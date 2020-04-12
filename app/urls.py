@@ -17,7 +17,7 @@ def inject_now():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.created_datetime.desc()).all()
     total_posts = db.session.query(Post).count()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, total_posts = total_posts)
@@ -44,6 +44,7 @@ def login():
 @app.route("/logout")
 def logout():
     logout_user()
+    flash("You Are Successfully Logged Out", "info")
     return redirect(url_for("dashboard"))
 
 # User Registration Route
@@ -120,12 +121,42 @@ def new_post():
         post_title = request.form["title"]
         post_content = request.form["body"]
 
+        # Storing Data in Post Model
         new_post = Post(title = post_title, body = post_content, author = current_user)
 
+        # Adding in DB
         try:
             db.session.add(new_post)
             db.session.commit()
             flash("Your Post Has Been Successfully Created!", "success")
             return redirect(url_for("dashboard"))
         except:
-            flash("There was an issue in creating your blog post! Please try again later.")
+            flash("There was an issue in creating your blog post! Please try again later.", "danger")
+
+# Update Post
+@app.route("/updatePost", methods = ["GET", "POST"])
+def updatePost():
+    if request.method == "POST":
+        post = Post.query.get(request.form.get("id"))
+        post.title = request.form["title"]
+        post.body = request.form["body"]
+        post.updated_datetime = datetime.utcnow()
+
+        db.session.commit()
+        flash("Post Updated Successfully!", "success")
+        return redirect(url_for("dashboard"))
+
+# Delete Post
+@app.route("/deletePost/<int:id>")
+def deletePost(id):
+    post_to_delete = Post.query.get_or_404(id)
+
+    try:
+        db.session.delete(post_to_delete)
+        db.session.commit()
+        flash("Post Deleted Successfully!", "success")
+        return redirect(url_for("dashboard"))
+    except:
+        flash("There was an issue in deleting your blog post! Please try again later.", "danger")
+
+
