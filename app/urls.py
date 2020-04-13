@@ -19,7 +19,7 @@ def inject_now():
 def dashboard():
     page = request.args.get("page", 1, type = int)
     posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
-    total_posts = db.session.query(Post).count()
+    total_posts = db.session.query(Post).filter_by(user_id = current_user.id).count()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, total_posts = total_posts)
 
@@ -98,7 +98,7 @@ def user(username):
         current_user.email = form.email.data
         db.session.commit()
         flash("Your Account Has Been Successfully Updated!", "success")
-        return redirect(url_for("user"))
+        return redirect(url_for("user", username = username))
     elif request.method == "GET":
         form.username.data = current_user.username
         form.firstname.data = current_user.firstname

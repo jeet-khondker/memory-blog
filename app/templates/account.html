@@ -57,13 +57,13 @@
                                 {% endfor %}
                                 </div>
                                 <div class="form-group row">
-                                <label for="lastname" class="col-md-3 col-form-label">Last Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="{{ current_user.lastname }}">
-                                </div>
-                                {% for error in form.lastname.errors %}
-                                    <span style="color: red;">{{ error }}</span>
-                                {% endfor %}
+                                    <label for="lastname" class="col-md-3 col-form-label">Last Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="lastname" placeholder="Last Name" value="{{ current_user.lastname }}">
+                                    </div>
+                                    {% for error in form.lastname.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
                                 </div>
                                 <div class="form-group row">
                                     <div class="input-group">
@@ -100,37 +100,42 @@
                     </div>
                     <div class="col-md-12">
                         <div class="article-metadata">
-                            <h1 class = "text-center"><i class="fas fa-blog"></i>&emsp;Your Posts</h1>
-                            {% for post in posts.items %}
-                            <div class="card">
-                                <div class="card-body row">
-                                    <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
-                                    <div class="col-md-10">
-                                        <h2 class="card-title">
-                                            <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
-                                        </h2>
-                                        <p class="card-text">{{ post.body }}</p>
+                            {% if posts.items|length < 1 %}
+                                <h3 class="text-center">Currently, you dont have any posts.</h3>
+                            {% else %}
+                                <h1 class = "text-center"><i class="fas fa-blog"></i>&emsp;Your Posts</h1>
+                                {% for post in posts.items %}
+                                    <div class="card">
+                                        <div class="card-body row">
+                                            <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
+                                            <div class="col-md-10">
+                                                <h2 class="card-title">
+                                                    <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
+                                                </h2>
+                                                <p class="card-text">{{ post.body }}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                            <div class="page">
-                                {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-                                    {% if posts.total > posts.per_page %}
-                                        {% if page_num %}
-                                            {% if posts.page == page_num %}
-                                                <a class="btn btn-info mt-4 mb-4" href="{{ url_for('user', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                {% endfor %}
+                            {% endif %}
+                                <div class="page">
+                                    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                        {% if posts.total > posts.per_page %}
+                                            {% if page_num %}
+                                                {% if posts.page == page_num %}
+                                                    <a class="btn btn-info mt-4 mb-4" href="{{ url_for('user', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                                {% else %}
+                                                    <a class="btn btn-outline-info mt-4 mb-4" href="{{ url_for('user', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                                {% endif %}
                                             {% else %}
-                                                <a class="btn btn-outline-info mt-4 mb-4" href="{{ url_for('user', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                                ...
                                             {% endif %}
                                         {% else %}
-                                            ...
-                                        {% endif %}
-                                    {% else %}
 
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
