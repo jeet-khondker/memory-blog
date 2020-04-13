@@ -113,6 +113,8 @@
                                         </div>
                                     </div>
 
+                                    
+
                                 </div>
                                 <h2 class="article-title">{{ post.title }}</h2>
                                 <p class="article-content">{{ post.body }}</p>
@@ -135,6 +137,33 @@
 
                             {% endif %}
                         {% endfor %}
+                    </div>
+
+                    <!-- Add Post Popup Dialog Box -->
+                    <div id="addPost" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="text-center modal-title"><i class="fas fa-plus"></i>&emsp;Add A Post</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ url_for('new_post') }}" method="POST" autocomplete="off">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Post Title" name="title" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" placeholder="Post Content" name="body" required="1"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i>&emsp;Add A Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
