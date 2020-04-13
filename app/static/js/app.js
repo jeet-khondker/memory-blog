@@ -10,8 +10,10 @@ function sayGreeting() {
         document.getElementById("greeting").innerHTML = "Good Day 🌤";
     } else if (new Date().getHours() > 12 && new Date().getHours() < 18) {
         document.getElementById("greeting").innerHTML = "Good Afternoon ⛅️";
-    } else {
+    } else if (new Date().getHours() >= 18 && new Date().getHours() < 24) {
         document.getElementById("greeting").innerHTML = "Good Evening 🌙";
+    } else {
+        document.getElementById("greeting").innerHTML = '';
     }
 }
 
