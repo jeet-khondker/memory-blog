@@ -78,11 +78,13 @@ def save_photo(form_photo):
     return photo_filename
 
 # Account Information Route
-@app.route("/user", methods = ["GET", "POST"])
+@app.route("/user/<string:username>", methods = ["GET", "POST"])
 @login_required
-def user():
+def user(username):
     page = request.args.get("page", 1, type = int)
-    posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
+    user = User.query.filter_by(username = username).first_or_404()
+    posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
+    # posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.photo.data:
