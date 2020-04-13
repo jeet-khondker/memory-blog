@@ -17,6 +17,9 @@ function sayGreeting() {
     }
 }
 
+/*****************************
+* FUNCTION: PLAY DELETE SOUND
+ ****************************/
 function playDelSound(el) {
     var delSound = document.createElement("audio");
     var link = el.srcElement.attributes.href.textContent; 
