@@ -1,3 +1,20 @@
+const greeting = document.getElementById("greeting");
+
+/************************
+* FUNCTION: SAY GREETING
+ ************************/
+function sayGreeting() {
+    if (new Date().getHours() < 10) {
+        document.getElementById("greeting").innerHTML = "Good Morning ☀️";
+    } else if (new Date().getHours() < 12) {
+        document.getElementById("greeting").innerHTML = "Good Day 🌤";
+    } else if (new Date().getHours() > 12 && new Date().getHours() < 18) {
+        document.getElementById("greeting").innerHTML = "Good Afternoon ⛅️";
+    } else {
+        document.getElementById("greeting").innerHTML = "Good Evening 🌙";
+    }
+}
+
 function playDelSound(el) {
     var delSound = document.createElement("audio");
     var link = el.srcElement.attributes.href.textContent; 
