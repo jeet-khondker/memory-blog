@@ -6,14 +6,18 @@
             <div class="col-md-12">
                 <div class="content-section">
                     <h1 class="display-4 lead">Dashboard</h1>
-                    <div class="media">
-                        <img class="rounded-circle account-img" src="{{ photo }}">
-                        <div class="media-body">
-                            <h2 id="greeting"></h2>
-                            <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+                    <div class="row">
+                        <div class="media col-md-6">
+                            <img class="rounded-circle account-img" src="{{ photo }}">
+                            <div class="media-body">
+                                <h2 id="greeting"></h2>
+                                <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-success createPost" data-toggle="modal" data-target="#addPost"><i class="fas fa-plus"></i>&nbsp;Create Post</button>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="card bg-warning">
@@ -65,7 +69,7 @@
                         </div>
                     </div>
                     
-                    {% for post in posts %}
+                    {% for post in posts.items %}
                         <article class="media content-section">
                             <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
                             <div class="media-body">
@@ -115,6 +119,23 @@
                             </div>
                         </article>
                     {% endfor %}
+                    <div class="page">
+                        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                            {% if posts.total > posts.per_page %}
+                                {% if page_num %}
+                                    {% if posts.page == page_num %}
+                                        <a class="btn btn-info mb-4" href="{{ url_for('dashboard', page = page_num) }}">{{ page_num }}</a>
+                                    {% else %}
+                                        <a class="btn btn-outline-info mb-4" href="{{ url_for('dashboard', page = page_num) }}">{{ page_num }}</a>
+                                    {% endif %}
+                                {% else %}
+                                    ...
+                                {% endif %}
+                            {% else %}
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

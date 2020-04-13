@@ -116,5 +116,13 @@ a.article-title:hover {
   background: #e3e3e3;
 }
 
+.page {
+  text-align: center;
+}
+
+.createPost {
+  float: right;
+}
+
 
 

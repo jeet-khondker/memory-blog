@@ -17,7 +17,8 @@ def inject_now():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    posts = Post.query.order_by(Post.created_datetime.desc()).all()
+    page = request.args.get("page", 1, type = int)
+    posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     total_posts = db.session.query(Post).count()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, total_posts = total_posts)
@@ -80,7 +81,8 @@ def save_photo(form_photo):
 @app.route("/user", methods = ["GET", "POST"])
 @login_required
 def user():
-    posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).all()
+    page = request.args.get("page", 1, type = int)
+    posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.photo.data:
