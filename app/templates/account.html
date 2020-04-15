@@ -16,7 +16,7 @@
                                 <p class="text-secondary">Email:&emsp;{{ current_user.email }}</p>
                                 <p class="text-secondary">Born On:&emsp;{{ current_user.dob.strftime("%B %d") }}</p>
                                 {% if current_user.last_seen %}
-                                    <p>Last Seen On {{ current_user.last_seen.strftime("%Y/%m/%d %H:%M:%S") }}</p>
+                                    <p class="text-secondary">Last Seen On:&emsp;{{ moment(current_user.last_seen).format("LLL") }}</p>
                                 {% endif %}
                             </div>
                         </div>
