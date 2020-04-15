@@ -8,6 +8,13 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from datetime import datetime
 
+# When User Becomes Authenticated, Track The TimeStamp For Last Seen On Profile
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
+
 @app.context_processor
 def inject_now():
     return {'now': datetime.utcnow()}
@@ -84,7 +91,6 @@ def user(username):
     page = request.args.get("page", 1, type = int)
     user = User.query.filter_by(username = username).first_or_404()
     posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
-    # posts = Post.query.filter_by(user_id = current_user.id).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.photo.data:
@@ -109,14 +115,14 @@ def user(username):
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
     return render_template("account.html", user = user, posts = posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
 
-# Post Information Route - READ
+# Post Information Route - READ Route
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template("post.html", title = post.title, post = post)
 
-# Add A Post Route - CREATE
-@app.route("/addPost", methods = ["POST"])
+# Add A Post Route - CREATE Route
+@app.route("/addPost", methods = ["GET", "POST"])
 @login_required
 def new_post():
 
@@ -137,7 +143,9 @@ def new_post():
         except:
             flash("There was an issue in creating your blog post! Please try again later.", "danger")
 
-# Update Post
+        return render_template(url_for("dashboard"))
+
+# Update Post Route
 @app.route("/updatePost", methods = ["GET", "POST"])
 def updatePost():
     if request.method == "POST":
@@ -154,7 +162,7 @@ def updatePost():
         flash("Post Updated Successfully!", "success")
         return redirect(url_for("dashboard"))
 
-# Delete Post
+# Delete Post Route
 @app.route("/deletePost/<int:id>")
 def deletePost(id):
     post_to_delete = Post.query.get_or_404(id)
@@ -170,4 +178,10 @@ def deletePost(id):
     except:
         flash("There was an issue in deleting your blog post! Please try again later.", "danger")
 
-
+# Other User Profiles Route
+@app.route("/userProfile/<string:username>")
+def userProfile(username):
+    page = request.args.get("page", 1, type = int)
+    user = User.query.filter_by(username = username).first_or_404()
+    posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
+    return render_template("userProfile.html", posts = posts, user = user)

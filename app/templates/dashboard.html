@@ -70,56 +70,106 @@
                     </div>
                     
                     {% for post in posts.items %}
-                        <article class="media content-section">
-                            <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
-                            <div class="media-body">
-                                <div class="article-metadata">
-                                    <a class="mr-2" href="{{ url_for('user', username = current_user.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                                    <small class="text-muted">Posted On: {{ post.created_datetime.strftime('%Y-%m-%d') }}</small>
-                                    {% if post.author == current_user %}
-                                        <div class="float-right-box">
-                                            <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
-                                            <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
-                                        </div>
-                                    {% endif %}
+                        {% if post.author == current_user %}
+                            <article class="media content-section">
+                                <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
+                                <div class="media-body">
+                                    <div class="article-metadata">
+                                        <a class="mr-2" href="{{ url_for('user', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
+                                        <small class="text-muted">Posted On: {{ post.created_datetime.strftime('%Y-%m-%d') }}</small>
+                                        {% if post.author == current_user %}
+                                            <div class="float-right-box">
+                                                <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
+                                                <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
+                                            </div>
+                                        {% endif %}
 
-                                    <!-- Edit Post Item Popup Dialog Box -->
-                                    <div id="editPost{{post.id}}" class="modal fade" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="{{ url_for('updatePost') }}" method="POST">
-                                                        <div class="form-group">
-                                                            <label>Post Title</label>
-                                                            <input type="hidden" name="id" value="{{post.id}}">
-                                                            <input type="text" class="form-control" name="title" value="{{post.title}}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Post Content</label>
-                                                            <textarea class="form-control" name="body">{{post.body}}</textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button class="btn btn-success" type="submit">Update Post</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <!-- Edit Post Item Popup Dialog Box -->
+                                        <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ url_for('updatePost') }}" method="POST">
+                                                            <div class="form-group">
+                                                                <label>Post Title</label>
+                                                                <input type="hidden" name="id" value="{{post.id}}">
+                                                                <input type="text" class="form-control" name="title" value="{{post.title}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Post Content</label>
+                                                                <textarea class="form-control" name="body">{{post.body}}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button class="btn btn-success" type="submit">Update Post</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
-
-                                    
-
+                                    <h2 class="article-title">{{ post.title }}</h2>
+                                    <p class="article-content">{{ post.body }}</p>
                                 </div>
-                                <h2 class="article-title">{{ post.title }}</h2>
-                                <p class="article-content">{{ post.body }}</p>
-                            </div>
-                        </article>
+                            </article>
+                        {% else %}
+                            <article class="media content-section">
+                                <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
+                                <div class="media-body">
+                                    <div class="article-metadata">
+                                        <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
+                                        <!--<button type="button" id="other_user" class="other_user" data-html="true" data-toggle="tooltip" title="{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}" data-content="<p>{{ post.author.bio }}</p><p>Last Active On: {{ post.author.last_seen.strftime('%Y/%m/%d, %H:%M:%S') }}</p>">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</button>-->
+                                        <small class="text-muted">Posted On: {{ post.created_datetime.strftime('%Y-%m-%d') }}</small>
+                                        {% if post.author == current_user %}
+                                            <div class="float-right-box">
+                                                <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
+                                                <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
+                                            </div>
+                                        {% endif %}
+
+                                        <!-- Edit Post Item Popup Dialog Box -->
+                                        <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ url_for('updatePost') }}" method="POST">
+                                                            <div class="form-group">
+                                                                <label>Post Title</label>
+                                                                <input type="hidden" name="id" value="{{post.id}}">
+                                                                <input type="text" class="form-control" name="title" value="{{post.title}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Post Content</label>
+                                                                <textarea class="form-control" name="body">{{post.body}}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button class="btn btn-success" type="submit">Update Post</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <h2 class="article-title">{{ post.title }}</h2>
+                                    <p class="article-content">{{ post.body }}</p>
+                                </div>
+                            </article>
+                        {% endif %}
                     {% endfor %}
                     <div class="page">
                         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}

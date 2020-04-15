@@ -10,8 +10,14 @@
                             <img class="rounded-circle edit-account-img" src="{{ photo }}">
                             <div class="media-body account-desc">
                                 <h2 class="account-heading">{{ current_user.firstname }} {{ current_user.middlename }} {{ current_user.lastname }}</h2>
+                                {% if current_user.bio %}
+                                    <p>{{ current_user.bio }}</p>
+                                {% endif %}
                                 <p class="text-secondary">Email:&emsp;{{ current_user.email }}</p>
                                 <p class="text-secondary">Born On:&emsp;{{ current_user.dob.strftime("%B %d") }}</p>
+                                {% if current_user.last_seen %}
+                                    <p>Last Seen On {{ current_user.last_seen.strftime("%Y/%m/%d %H:%M:%S") }}</p>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-6 text-center">

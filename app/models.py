@@ -21,6 +21,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index = True, unique = True)
     password_hash = db.Column(db.String(128))
     photo = db.Column(db.String(20), nullable = False, default = "default_user.jpg")
+    bio = db.Column(db.String(500))
+    last_seen = db.Column(db.DateTime, default = datetime.utcnow)
     posts = db.relationship("Post", backref = "author", lazy = "dynamic")
 
     def __repr__(self):

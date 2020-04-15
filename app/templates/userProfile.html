@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-section">
+                    <div class="row">
+                        
+                        <div class="media">
+                            <img class="rounded-circle" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+                            <div class="media-body userprofile_mediabody">
+                                <h2 class="account-heading">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h2>
+                                {% if user.bio %}
+                                    <p>{{ user.bio }}</p>
+                                {% endif %}
+                                <p class="text-secondary">Email:&emsp;{{ user.email }}</p>
+                                <p class="text-secondary">Born On:&emsp;{{ user.dob.strftime("%B %d") }}</p>
+                                {% if user.last_seen %}
+                                    <p>Last Seen On {{ user.last_seen.strftime("%Y/%m/%d %H:%M:%S") }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="article-metadata">
+                            {% if posts.items|length < 1 %}
+                                <h3 class="text-center">Currently, you dont have any posts.</h3>
+                            {% else %}
+                            <h1 class = "text-center"><i class="fas fa-blog"></i>&emsp;Posts of {{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h1>
+                                {% for post in posts.items %}
+                                    <div class="card">
+                                        <div class="card-body row">
+                                            <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
+                                            <div class="col-md-10">
+                                                <h2 class="card-title">
+                                                    <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
+                                                </h2>
+                                                <p class="card-text">{{ post.body }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <div class="page">
+                                {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                    {% if posts.total > posts.per_page %}
+                                        {% if page_num %}
+                                            {% if posts.page == page_num %}
+                                                <a class="btn btn-info mt-4 mb-4" href="{{ url_for('userProfile', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                            {% else %}
+                                                <a class="btn btn-outline-info mt-4 mb-4" href="{{ url_for('userProfile', username = user.username, page = page_num) }}">{{ page_num }}</a>
+                                            {% endif %}
+                                        {% else %}
+                                            ...
+                                        {% endif %}
+                                    {% else %}
+
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
