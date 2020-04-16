@@ -26,9 +26,8 @@ def inject_now():
 def dashboard():
     page = request.args.get("page", 1, type = int)
     posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
-    total_posts = db.session.query(Post).filter_by(user_id = current_user.id).count()
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, total_posts = total_posts)
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -90,6 +89,7 @@ def save_photo(form_photo):
 def user(username):
     page = request.args.get("page", 1, type = int)
     user = User.query.filter_by(username = username).first_or_404()
+    total_posts = db.session.query(Post).filter_by(user_id = current_user.id).count()
     posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     form = UpdateAccountForm()
     if form.validate_on_submit():
@@ -113,7 +113,7 @@ def user(username):
         form.dob.data = current_user.dob
         form.email.data = current_user.email
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("account.html", user = user, posts = posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
+    return render_template("account.html", user = user, posts = posts, total_posts = total_posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
 
 # Post Information Route - READ Route
 @app.route("/post/<int:post_id>")
@@ -183,5 +183,6 @@ def deletePost(id):
 def userProfile(username):
     page = request.args.get("page", 1, type = int)
     user = User.query.filter_by(username = username).first_or_404()
+    total_posts = db.session.query(Post).filter_by(user_id = user.id).count()
     posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
-    return render_template("userProfile.html", posts = posts, user = user)
+    return render_template("userProfile.html", posts = posts, user = user, total_posts = total_posts)

@@ -3,11 +3,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-# User Table
+# USER Table
 class User(UserMixin, db.Model):
 
     __tablename__ = "MEMORYBLOG_MASTER_USER"
@@ -34,7 +30,11 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-# Post Table
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+# POST Table
 class Post(db.Model):
 
     __tablename__ = "MEMORYBLOG_TRANSACTION_POST"
@@ -48,3 +48,4 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.created_datetime}')"
+
