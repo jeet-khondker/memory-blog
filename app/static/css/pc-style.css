@@ -127,5 +127,17 @@ a.article-title:hover {
   padding-left: 15px;
 }
 
+.panel-box {
+  color: #000;
+  background-color: #d4d4d4;
+  border-color: #000;
+}
 
+.data-box {
+  margin-bottom: 10px;
+}
 
+.data-box-text {
+  font-size: 40px;
+  font-family: 'Oswald', sans-serif;
+}

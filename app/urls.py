@@ -186,3 +186,41 @@ def userProfile(username):
     total_posts = db.session.query(Post).filter_by(user_id = user.id).count()
     posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     return render_template("userProfile.html", posts = posts, user = user, total_posts = total_posts)
+
+@app.route("/follow/<username>")
+@login_required
+def follow(username):
+    user = User.query.filter_by(username = username).first()
+
+    if user is None:
+        flash("User does not exist!", "danger")
+        return redirect(url_for("dashboard"))
+
+    if current_user.is_following(user):
+        flash("You are already following this user!", "info")
+        return redirect(url_for("userProfile", username = username))
+
+    current_user.follow(user)
+    db.session.commit()
+
+    flash("You are now following {}".format(username), "success")
+    return redirect(url_for("userProfile", username = username))
+
+@app.route("/unfollow/<username>")
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username = username).first()
+
+    if user is None:
+        flash("User does not exist!", "danger")
+        return redirect(url_for("dashboard"))
+
+    if user == current_user:
+        flash('You cannot unfollow yourself!')
+        return redirect(url_for('user', username=username))
+
+    current_user.unfollow(user)
+    db.session.commit()
+
+    flash("You are not following {}".format(username), "success")
+    return redirect(url_for("userProfile", username = username))

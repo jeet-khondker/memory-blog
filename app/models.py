@@ -3,6 +3,15 @@ from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# FOLLOW Association Table
+class Follow(db.Model):
+
+    __tablename__ = "MEMORYBLOG_ASSOCIATION_FOLLOW"
+
+    follower_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), primary_key = True)
+    followed_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), primary_key = True)
+    follow_time = db.Column(db.DateTime, default = datetime.utcnow)
+
 # USER Table
 class User(UserMixin, db.Model):
 
@@ -21,6 +30,9 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime, default = datetime.utcnow)
     posts = db.relationship("Post", backref = "author", lazy = "dynamic")
 
+    followed = db.relationship("Follow", foreign_keys = [Follow.follower_id], backref = db.backref("follower", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
+    followers = db.relationship("Follow", foreign_keys = [Follow.followed_id], backref = db.backref("followed", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
+
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.photo}')"
 
@@ -29,6 +41,26 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def follow(self, user):
+        if not self.is_following(user):
+            f = Follow(follower = self, followed = user)
+            db.session.add(f)
+
+    def unfollow(self, user):
+        f = self.followed.filter_by(followed_id = user.id).first()
+        if f:
+            db.session.delete(f)
+
+    def is_following(self, user):
+        if user.id is None:
+            return False
+        return self.followed.filter_by(followed_id = user.id).first() is not None
+
+    def is_followed_by(self, user):
+        if user.id is None:
+            return False
+        return self.followers.filter_by(follower_id = user.id).first() is not None
 
 @login.user_loader
 def load_user(id):
@@ -48,4 +80,7 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.created_datetime}')"
+
+
+
 
