@@ -25,9 +25,18 @@ def inject_now():
 @login_required
 def dashboard():
     page = request.args.get("page", 1, type = int)
+
+    show_followed = False
+
+    if current_user.is_authenticated:
+        show_followed = bool(request.cookies.get("show_followed", ''))
+    if show_followed:
+        query = current_user.followed_posts
+
     posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts)
+
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, show_followed = show_followed)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -143,7 +152,7 @@ def new_post():
         except:
             flash("There was an issue in creating your blog post! Please try again later.", "danger")
 
-        return render_template(url_for("dashboard"))
+        # return render_template(url_for("dashboard"))
 
 # Update Post Route
 @app.route("/updatePost", methods = ["GET", "POST"])
@@ -224,3 +233,34 @@ def unfollow(username):
 
     flash("You are not following {}".format(username), "success")
     return redirect(url_for("userProfile", username = username))
+
+@app.route("/followers/<username>")
+def followers(username):
+    user = User.query.filter_by(username = username).first()
+
+    if user is None:
+        flash("User does not exist!", "danger")
+        return redirect(url_for("dashboard"))
+
+    page = request.args.get("page", 1, type = int)
+    users = user.followers.paginate(page = page, per_page = 5)
+
+    follows = [{"user": item.follower, "follow_time": item.follow_time} for item in users.items]
+
+    return render_template("followers.html", user = user, users = users, follows = follows, title = "Followers of")
+
+@app.route("/followed/<username>")
+def followed_by(username):
+    user = User.query.filter_by(username = username).first()
+
+    if user is None:
+        flash("User does not exist!", "danger")
+        return redirect(url_for("dashboard"))
+
+    page = request.args.get("page", 1, type = int)
+    users = user.followed.paginate(page = page, per_page = 5)
+
+    follows = [{"user": item.followed, "follow_time": item.follow_time} for item in users.items]
+
+    return render_template("followers.html", user = user, users = users, title = "Followed By", follows = follows)
+

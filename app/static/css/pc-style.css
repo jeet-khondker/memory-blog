@@ -141,3 +141,14 @@ a.article-title:hover {
   font-size: 40px;
   font-family: 'Oswald', sans-serif;
 }
+
+.follower-img {
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
