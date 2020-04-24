@@ -61,8 +61,19 @@ class UpdateAccountForm(FlaskForm):
 
 # Post Form
 class PostForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
-    body = TextAreaField("Body", validators=[DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
+    title = StringField("Title", validators = [DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
+    body = TextAreaField("Body", validators = [DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
     submit = SubmitField("Post")
+
+# Reset Password Request Form
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField("Email", validators = [DataRequired(message = "Email Address is required."), Email()], render_kw = {"placeholder": "Email Address"})
+    submit = SubmitField("Request Password Reset")
+
+# Password Reset Form
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField("Password", validators = [DataRequired(message = "Password is required.")], render_kw = {"placeholder": "Password"})
+    confirm_password = PasswordField("Repeat Password", validators = [DataRequired(message = "Password Confirmation is required."), EqualTo("password")], render_kw = {"placeholder": "Confirm Password"})
+    submit = SubmitField("Request Password Reset")
 
 
