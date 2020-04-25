@@ -166,10 +166,13 @@ a.article-title:hover {
 }
 
 .error-container {
-  margin: 25%;
+  margin: 15%;
 }
 
 .error-icon {
-  width: 100px; 
-  margin: 0 41%;
+  margin: 0 auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
