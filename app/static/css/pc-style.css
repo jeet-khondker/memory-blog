@@ -164,3 +164,12 @@ a.article-title:hover {
 .loginForm {
   margin-bottom: 15px;
 }
+
+.error-container {
+  margin: 25%;
+}
+
+.error-icon {
+  width: 100px; 
+  margin: 0 41%;
+}

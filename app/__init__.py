@@ -43,4 +43,4 @@ if not app.debug:
         app.logger.addHandler(mail_handler)
 
 
-from app import urls, models
+from app import urls, models, errors
