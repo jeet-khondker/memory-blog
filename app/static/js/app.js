@@ -29,3 +29,5 @@ function playDelSound(el) {
     setTimeout(function(){window.location = link;}, 1000);
     el.preventDefault(); 
 }
+
+

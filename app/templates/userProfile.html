@@ -11,9 +11,6 @@
                                 <img class="rounded-circle" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
                                 <div class="media-body userprofile_mediabody">
                                     <h2 class="account-heading">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h2>
-                                    {% if user.bio %}
-                                        <p>{{ user.bio }}</p>
-                                    {% endif %}
 
                                     {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
                                         <span class="col-md-12 badge badge-pill badge-info text-center"><i class="fas fa-check"></i>&emsp;Following You</span>
