@@ -175,9 +175,6 @@ def updatePost():
 def deletePost(id):
     post_to_delete = Post.query.get_or_404(id)
 
-    if post.author != current_user:
-        abort(403)
-
     try:
         db.session.delete(post_to_delete)
         db.session.commit()

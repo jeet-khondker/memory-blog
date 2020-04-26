@@ -115,14 +115,6 @@ a.article-title:hover {
   font-weight: bolder;
 }
 
-.float-right-box {
-  float: right;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #e3e3e3;
-  background: #e3e3e3;
-}
-
 .page {
   text-align: center;
 }

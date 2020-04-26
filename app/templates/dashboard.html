@@ -15,7 +15,19 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-success createPost" data-toggle="modal" data-target="#addPost"><i class="fas fa-plus"></i>&nbsp;Create Post</button>
+
+                            <form action="{{ url_for('new_post') }}" method="POST" autocomplete="off">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="What Is In Your Mind Right Now?" name="title" required="1">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Say Something About It" name="body" required="1"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block btn-success createPost"><i class="fas fa-plus"></i>&nbsp;Create Post</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                     
@@ -94,47 +106,47 @@
                                     <div class="article-metadata">
                                         <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
                                         <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
-                                        {% if post.author == current_user %}
-                                            <div class="float-right-box">
-                                                <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
-                                                <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
-                                            </div>
-                                        {% endif %}
-
-                                        <!-- Edit Post Item Popup Dialog Box -->
-                                        <div id="editPost{{post.id}}" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ url_for('updatePost') }}" method="POST">
-                                                            <div class="form-group">
-                                                                <label>Post Title</label>
-                                                                <input type="hidden" name="id" value="{{post.id}}">
-                                                                <input type="text" class="form-control" name="title" value="{{post.title}}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Post Content</label>
-                                                                <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <button class="btn btn-success" type="submit">Update Post</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
                                     <p class="article-content" style="white-space: pre-wrap;">{{ post.body }}</p>
                                 </div>
+                                {% if post.author == current_user %}
+                                    <div class="float-right-box">
+                                        <a href="/updatePost/{{ post.id }}" class="btn btn-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&nbsp;Edit</a>
+                                        <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</a>
+                                    </div>
+                                {% endif %}
+
+                                <!-- Edit Post Item Popup Dialog Box -->
+                                <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url_for('updatePost') }}" method="POST">
+                                                    <div class="form-group">
+                                                        <label>Post Title</label>
+                                                        <input type="hidden" name="id" value="{{post.id}}">
+                                                        <input type="text" class="form-control" name="title" value="{{post.title}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Post Content</label>
+                                                        <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-success" type="submit">Update Post</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </article>
                         {% endif %}
                     {% endfor %}
@@ -154,33 +166,6 @@
 
                             {% endif %}
                         {% endfor %}
-                    </div>
-
-                    <!-- Add Post Popup Dialog Box -->
-                    <div id="addPost" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="text-center modal-title"><i class="fas fa-plus"></i>&emsp;Add A Post</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ url_for('new_post') }}" method="POST" autocomplete="off">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Post Title" name="title" required="1">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" placeholder="Post Content" name="body" required="1"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i>&emsp;Add A Post</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
