@@ -35,11 +35,6 @@ class User(UserMixin, db.Model):
     followed = db.relationship("Follow", foreign_keys = [Follow.follower_id], backref = db.backref("follower", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
     followers = db.relationship("Follow", foreign_keys = [Follow.followed_id], backref = db.backref("followed", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
 
-    # Private Messages Support in User Model
-    messages_sent = db.relationship("Message", foreign_keys = "Message.sender_id", backref = "author", lazy = "dynamic")
-    messages_received = db.relationship("Message", foreign_keys = "Message.recipient_id", backref = "recipient", lazy = "dynamic")
-    last_message_seen_time = db.Column(db.DateTime)
-
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.photo}')"
 
@@ -84,11 +79,6 @@ class User(UserMixin, db.Model):
             return
         return User.query.get(id)
 
-    # Private Messages Support in User Model
-    def new_messages(self):
-        last_seen_time = self.last_message_seen_time or datetime(1900, 1, 1) # Default: 1st January 1900 if not available
-        return Message.query.filter_by(recipients = self).filter(Message.delivered_time > last_seen_time).count()
-
 
 @login.user_loader
 def load_user(id):
@@ -109,19 +99,7 @@ class Post(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.created_datetime}')"
 
-# Message Model
-class Message(db.Model):
-    
-    __tablename__ = "MEMORYBLOG_TRANSACTION_USER_MESSAGE"
 
-    id = db.Column(db.Integer, primary_key = True)
-    sender_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"))
-    recipient_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"))
-    body = db.Column(db.String(1000))
-    delivered_time = db.Column(db.DateTime, index = True, default = datetime.utcnow)
-
-    def __repr__(self):
-        return f"Message('{self.body}')"
 
 
 

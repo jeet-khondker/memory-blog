@@ -153,8 +153,6 @@ def new_post():
         except:
             flash("There was an issue in creating your blog post! Please try again later.", "danger")
 
-        # return render_template(url_for("dashboard"))
-
 # Update Post Route
 @app.route("/updatePost", methods = ["GET", "POST"])
 def updatePost():
@@ -302,7 +300,3 @@ def reset_password(token):
         flash("Congratulations! Your password has been reset successfully.", "success")
         return redirect(url_for("login"))
         return render_template("reset_password.html", form = form)
-
-
-
-

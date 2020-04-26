@@ -4,7 +4,6 @@ from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, DateField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo
-# from wtforms.fields.html5 import DateField
 from app.models import User
 
 # User Login Form
@@ -76,4 +75,8 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField("Repeat Password", validators = [DataRequired(message = "Password Confirmation is required."), EqualTo("password")], render_kw = {"placeholder": "Confirm Password"})
     submit = SubmitField("Request Password Reset")
 
+# Private Messages Form
+class MessageForm(FlaskForm):
+    message = TextAreaField("Message", validators = [DataRequired(message = "Message is required.")], render_kw = {"placeholder": "Message"})
+    submit = SubmitField("Send Message")
 
