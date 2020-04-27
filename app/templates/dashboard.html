@@ -51,7 +51,7 @@
                     
                     {% for post in posts.items %}
                         {% if post.author == current_user %}
-                            <article class="media content-section">
+                            <article class="media blog-content-section">
                                 <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
                                 <div class="media-body">
                                     <div class="article-metadata">
@@ -96,11 +96,11 @@
 
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
-                                    <p class="article-content" style="white-space: pre-wrap;">{{ post.body }}</p>
+                                    <p class="article-content">{{ post.body }}</p>
                                 </div>
                             </article>
                         {% else %}
-                            <article class="media content-section">
+                            <article class="media blog-content-section">
                                 <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
                                 <div class="media-body">
                                     <div class="article-metadata">
@@ -108,7 +108,7 @@
                                         <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
-                                    <p class="article-content" style="white-space: pre-wrap;">{{ post.body }}</p>
+                                    <p class="article-content">{{ post.body }}</p>
                                 </div>
                                 {% if post.author == current_user %}
                                     <div class="float-right-box">
