@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="content-section">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="media">
-                                <img class="rounded-circle" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+                        <div class="col-md-6 userProfile">
+                            <div class="media usrProfile">
+                                <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
                                 <div class="media-body userprofile_mediabody">
                                     <h2 class="account-heading">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h2>
 
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 blog-info">
                             <div class="data-box">
                                 <div class="col-md-12">
                                     <div class="card text-white bg-primary">
@@ -103,7 +103,7 @@
                                     <div class="card">
                                         <div class="card-body row">
                                             <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-10 userProfile_blog">
                                                 <h2 class="card-title">
                                                     <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
                                                 </h2>

@@ -29,8 +29,8 @@
                                 {% endif %}
                             </div>
                         </div>
-                        <div class="col-md-6 text-center">
-                            <h1 class = "text-center"><i class="fas fa-edit"></i>&emsp;Edit Your Information</h1>
+                        <div class="col-md-6 text-center editForm">
+                            <h1 class = "accountEditHeader text-center"><i class="fas fa-edit"></i>&emsp;Edit Your Information</h1>
                             {% with messages = get_flashed_messages(with_categories=true) %}
                                 {% if messages %}
                                     
@@ -83,7 +83,7 @@
                                 <div class="form-group row">
                                     <div class="input-group">
                                         <label for="dob" class="col-md-3 col-form-label">Date Of Birth</label>&emsp;
-                                        <input class="datepicker" id="dob" name="dob" type="date" value="{{ current_user.dob.strftime('%Y-%m-%d') }}">
+                                        <input class="datepicker dob" id="dob" name="dob" type="date" value="{{ current_user.dob.strftime('%Y-%m-%d') }}">
                                     </div>
                                     {% for error in form.dob.errors %}
                                         <span style="color: red;">{{ error }}</span>
@@ -116,7 +116,7 @@
 
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 info-box">
                                 <div class="card text-white bg-primary">
                                     <div class="card-body">
                                         {% if total_posts <= 1 %}
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 info-box">
                                 <a href="{{ url_for('followers', username = user.username) }}">
                                     <div class="card bg-warning">
                                         <div class="card-body">
@@ -142,7 +142,7 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4 info-box">
                                 <a href="{{ url_for('.followed_by', username=user.username) }}">
                                     <div class="card text-white bg-info">
                                         <div class="card-body">
@@ -166,7 +166,7 @@
                                     <div class="card">
                                         <div class="card-body row">
                                             <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-10 post-content">
                                                 <h2 class="card-title">
                                                     <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
                                                 </h2>

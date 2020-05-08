@@ -1,0 +1,333 @@
+/*
+iPad or Mobile Style CSS
+*/
+
+@media (min-width: 500px) and (max-width: 575px) {
+
+    .jumbotron {
+        background-image: none !important;
+        height: 0px !important;
+        padding: 0px !important;
+    }
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-register {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .account-heading {
+        font-size: 30px !important;
+    }
+    
+    .edit-account-img {
+        margin: 0px !important;
+    }
+
+    .account-desc {
+        margin: 0px 20px !important;
+    }
+
+    .dob {
+        display: flex;
+        flex: 0 0 93% !important;
+    }
+
+    .accountEditHeader {
+        font-size: 39px !important;
+    }
+
+    .card {
+        margin: 10px !important;
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+    .jumbotron {
+        background-image: none !important;
+        height: 0px !important;
+        padding: 0px !important;
+    }
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin: 20px 0px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-register {
+        margin: 20px 0px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin: 20px 0px !important;
+        padding: 20px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .dob {
+        display: flex;
+        flex: 0 0 94% !important;
+    }
+
+    .account-heading {
+        font-size: 38px !important;
+    }
+
+    .edit-account-img {
+        margin: 0px !important;
+    }
+
+    .account-desc {
+        margin: 0px 20px !important;
+    }
+
+    .card {
+        margin: 10px !important;
+    }
+
+    .account-heading {
+        font-size: 35px !important;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1010px) {
+
+    .jumbotron {
+        height: 0px !important;
+        padding: 0px !important;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+
+    .left-middle-content {
+        margin: 10px 25% !important;
+        text-align: center !important;
+        max-width: 100% !important;
+        flex: 0 0 57% !important;
+    }
+
+    .right-middle-content-login {
+        margin: 25px 25% !important;
+        padding: 20px !important;
+        flex: 0 0 100% !important;
+        max-width: 55%;
+    }
+
+    .right-middle-content-register {
+        margin: 25px 25% !important;
+        padding: 20px !important;
+        flex: 0 0 100% !important;
+        max-width: 55% !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin: 25px 25% !important;
+        padding: 20px !important;
+        flex: 0 0 100% !important;
+        max-width: 55%;
+    }
+
+    .datepicker {
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .register-btn, .reset-btn {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .media {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .addPost {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .edit-account-img {
+        margin: 0px !important;
+    }
+
+    .account-desc {
+        margin: 0px 20px !important;
+    }
+
+    .editForm {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .dob {
+        flex: 0 0 71% !important;
+    }
+
+    .info-box {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .card {
+        margin: 10px;
+    }
+
+    .date-content {
+        flex: 0 0 25% !important;
+        max-width: 25%;
+    }
+
+    .post-content {
+        flex: 0 0 75% !important;
+        max-width: 75%;
+    }
+
+    .blog-info {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .userProfile {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .userProfile_img {
+        margin: 0 15% 0 15% !important;
+    }
+
+    .userProfile_mediabody {
+        max-width: 0;
+    }
+
+    .userProfile_blog {
+        flex: 0 0 75% !important;
+    }
+
+}
+
+@media (min-width: 1011px) and (max-width: 1199px) {
+
+    .left-middle-content {
+        margin: 20% 0 0 0 !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: -35px !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .account-heading {
+        font-size: 33px !important;
+    }
+
+    .editForm {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .edit-account-img {
+        margin: 0px !important;
+    }
+
+    .account-desc {
+        margin: 0 20px !important;
+    }
+
+    .media {
+        margin: 0px 25%;
+    }
+
+    .usrProfile {
+        margin: 0 !important;
+    }
+
+    .dob {
+        max-width: 72%;
+        flex: 0 0 100% !important;
+    }
+
+    .info-box {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+        margin: 10px;
+    }
+
+    .date-content {
+        flex: 0 0 25% !important;
+        max-width: 25%;
+    }
+
+    .post-content {
+        flex: 0 0 75% !important;
+        max-width: 75%;
+    }
+
+    .addPost {
+        flex: 0 0 100% !important;
+        max-width: 100%;
+    }
+
+    .userProfile_blog {
+        flex: 0 0 75% !important;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .datepicker {
+        max-width: 100% !important;
+    }
+
+    .left-middle-content {
+        margin: 20% 0 0 0 !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: -35px !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .dob {
+        flex: 0 0 69% !important;
+    }
+
+}
+
+

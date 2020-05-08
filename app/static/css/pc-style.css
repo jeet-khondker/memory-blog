@@ -5,7 +5,7 @@ body {
 .jumbotron {
   background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('/static/img/front-background.jpg') ;
   background-size: cover; 
-  height: 100vh;
+  height: 93vh;
   width: 100%;
   margin-bottom: 0px;
 }
@@ -99,6 +99,11 @@ a.article-title:hover {
 
 .datepicker {
   width: 69%;
+}
+
+.dob {
+  display: flex;
+  flex: 0 0 69%;
 }
 
 .media {
