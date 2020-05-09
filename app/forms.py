@@ -69,14 +69,14 @@ class ResetPasswordRequestForm(FlaskForm):
     email = StringField("Email", validators = [DataRequired(message = "Email Address is required."), Email()], render_kw = {"placeholder": "Email Address"})
     submit = SubmitField("Request Password Reset")
 
+    def validate_email(self, email):
+        user = User.query.filter_by(email = email.data).first()
+        if user is None:
+            raise ValidationError("There is no account with that email. You must register first.")
+
 # Password Reset Form
 class ResetPasswordForm(FlaskForm):
     password = PasswordField("Password", validators = [DataRequired(message = "Password is required.")], render_kw = {"placeholder": "Password"})
     confirm_password = PasswordField("Repeat Password", validators = [DataRequired(message = "Password Confirmation is required."), EqualTo("password")], render_kw = {"placeholder": "Confirm Password"})
-    submit = SubmitField("Request Password Reset")
-
-# Private Messages Form
-class MessageForm(FlaskForm):
-    message = TextAreaField("Message", validators = [DataRequired(message = "Message is required.")], render_kw = {"placeholder": "Message"})
-    submit = SubmitField("Send Message")
+    submit = SubmitField("Reset Password")
 

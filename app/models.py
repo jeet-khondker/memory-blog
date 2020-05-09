@@ -1,9 +1,10 @@
-from app import app, db, login
 from datetime import datetime
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from time import time
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from time import time
-import jwt
+# import jwt
+from app import app, db, login
 
 # FOLLOW Association Table
 class Follow(db.Model):
@@ -65,19 +66,35 @@ class User(UserMixin, db.Model):
             return False
         return self.followers.filter_by(follower_id = user.id).first() is not None
 
-    # Reset Password Support in User Model
-    def get_reset_password_token(self, expires_in = 600):
-        return jwt.encode({
-            "reset_password": self.id, "expire": time() + expires_in
-        }, app.config["SECRET_KEY"], algorithm = "HS256").decode("utf-8")
+    """ Reset Password Support in User Model
+    def get_reset_password_token(self, expires_sec = 600):
+        return jwt.encode(
+            {"reset_password": self.id, "exp": time() + expires_in}, 
+            app.config["SECRET_KEY"], algorithm = "HS256").decode("utf-8") """
 
+    # Reset Password Support in User Model
+    def get_reset_password_token(self, expires_sec = 1800):
+        s = Serializer(app.config["SECRET_KEY"], expires_sec)
+        return s.dumps({"user_id": self.id}).decode("utf-8")
+
+    # Verifying Reset Password Token in User Model
+    @staticmethod
+    def verify_reset_password_token(token):
+        s = Serializer(app.config["SECRET_KEY"])
+        try:
+            user_id = s.loads(token)["user_id"]
+        except:
+            return None
+        return User.query.get(user_id)
+
+    """
     @staticmethod
     def verify_reset_password_token(token):
         try:
             id = jwt.decode(token, app.config["SECRET_KEY"], algorithms = ["HS256"])["reset_password"]
         except:
             return
-        return User.query.get(id)
+        return User.query.get(id) """
 
 
 @login.user_loader

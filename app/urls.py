@@ -1,13 +1,14 @@
 import os, secrets
-from app import app, db
+from datetime import datetime
 from PIL import Image
-from flask import render_template, flash, redirect, url_for, request, abort
-from werkzeug.urls import url_parse
-from app.forms import LoginForm, RegistrationForm, PostForm, UpdateAccountForm, ResetPasswordRequestForm, ResetPasswordForm
+from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
+from app import app, db
+from app.forms import LoginForm, RegistrationForm, PostForm, UpdateAccountForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
 from app.email import send_password_reset_email
-from datetime import datetime
+
 
 # When User Becomes Authenticated, Track The TimeStamp For Last Seen On Profile
 @app.before_request
@@ -78,6 +79,46 @@ def register():
         flash("Congratulations! You are now a registered user.", "success")
         return redirect(url_for("login"))
     return render_template("register.html", title = "User Registration", form = form)
+
+# Reset Password Request Route
+@app.route("/reset_password", methods = ["GET", "POST"])
+def reset_password_request():
+    
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard"))
+    
+    form = ResetPasswordRequestForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+            flash("Please check your email for the instructions to reset your password", "info")
+            return redirect(url_for("login"))
+
+    return render_template("reset_password_request.html", title = "Reset Password", form = form)
+
+# Password Reset Route
+@app.route("/reset_password/<token>", methods = ["GET", "POST"])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard"))
+
+    user = User.verify_reset_password_token(token)
+
+    if not user:
+        flash("Invalid Token", "warning")
+        return redirect(url_for("reset_password_request"))
+
+    form = ResetPasswordForm()
+
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash("Congratulations! Your password has been reset successfully.", "success")
+        return redirect(url_for("login"))
+
+    return render_template("reset_password.html", form = form)
 
 # Save Photo Route
 def save_photo(form_photo):
@@ -263,37 +304,3 @@ def followed_by(username):
     follows = [{"user": item.followed, "follow_time": item.follow_time} for item in users.items]
 
     return render_template("followers.html", user = user, users = users, title = "Followed By", follows = follows)
-
-# Reset Password Request Route
-@app.route("/reset_password_request", methods = ["GET", "POST"])
-def reset_password_request():
-    
-    if current_user.is_authenticated:
-        return redirect(url_for("dashboard"))
-    
-    form = ResetPasswordRequestForm()
-
-    if form.validate_on_submit():
-        user = User.query.filter_by(email = form.email.data).first()
-        if user:
-            send_password_reset_email(user)
-        flash("Please check your email for the instructions to reset your password", "info")
-        return redirect(url_for("login"))
-    
-    return render_template("reset_password_request.html", title = "Reset Password", form = form)
-
-# Password Reset Route
-@app.route("/reset_password/<token>", methods = ["GET", "POST"])
-def reset_password(token):
-    if current_user.is_authenticated:
-        return redirect(url_for("dashboard"))
-    user = User.verify_reset_password_token(token)
-    if not user:
-        return redirect(url_for("dashboard"))
-    form = ResetPasswordForm()
-    if form.validate_on_submit():
-        user.set_password(form.password.data)
-        db.session.commit()
-        flash("Congratulations! Your password has been reset successfully.", "success")
-        return redirect(url_for("login"))
-        return render_template("reset_password.html", form = form)
