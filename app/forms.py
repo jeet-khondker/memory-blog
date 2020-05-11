@@ -35,7 +35,7 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
 
-# User Registration Form
+# User Profile Update Form
 class UpdateAccountForm(FlaskForm):
     username = StringField("Username", validators = [DataRequired(message = "Username is required.")], render_kw = {"placeholder": "Username"})
     firstname = StringField("First Name", validators = [DataRequired(message = "First Name is required.")], render_kw = {"placeholder": "First Name"})
