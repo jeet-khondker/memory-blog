@@ -66,12 +66,6 @@ class User(UserMixin, db.Model):
             return False
         return self.followers.filter_by(follower_id = user.id).first() is not None
 
-    """ Reset Password Support in User Model
-    def get_reset_password_token(self, expires_sec = 600):
-        return jwt.encode(
-            {"reset_password": self.id, "exp": time() + expires_in}, 
-            app.config["SECRET_KEY"], algorithm = "HS256").decode("utf-8") """
-
     # Reset Password Support in User Model
     def get_reset_password_token(self, expires_sec = 1800):
         s = Serializer(app.config["SECRET_KEY"], expires_sec)
@@ -86,16 +80,6 @@ class User(UserMixin, db.Model):
         except:
             return None
         return User.query.get(user_id)
-
-    """
-    @staticmethod
-    def verify_reset_password_token(token):
-        try:
-            id = jwt.decode(token, app.config["SECRET_KEY"], algorithms = ["HS256"])["reset_password"]
-        except:
-            return
-        return User.query.get(id) """
-
 
 @login.user_loader
 def load_user(id):
