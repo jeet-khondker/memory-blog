@@ -1,1 +1,71 @@
-2020-05-17 12:03:08,536 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:14:39,398 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:15:44,036 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:19:27,344 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:25:30,608 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:41:00,396 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:42:53,530 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 12:56:30,055 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 15:06:59,776 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 15:54:37,696 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-17 15:58:48,243 ERROR: Exception on /post/12 [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 173, in post
+    return render_template("post.html", title = post.title, post = post)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/loaders.py", line 117, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: post.html
+2020-05-17 15:58:59,272 ERROR: Exception on /post/11 [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 173, in post
+    return render_template("post.html", title = post.title, post = post)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/loaders.py", line 117, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: post.html
