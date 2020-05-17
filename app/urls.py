@@ -8,6 +8,7 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, PostForm, UpdateAccountForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post
 from app.email import send_password_reset_email
+from flask_mail import Message
 
 
 # When User Becomes Authenticated, Track The TimeStamp For Last Seen On Profile
@@ -91,12 +92,11 @@ def reset_password_request():
 
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
-        if user:
-            send_password_reset_email(user)
-            flash("Please check your email for the instructions to reset your password", "info")
-            return redirect(url_for("login"))
+        send_password_reset_email(user)
+        flash("Please check your email for the instructions to reset your password", "info")
+        return redirect(url_for("login"))
 
-    return render_template("reset_password_request.html", title = "Reset Password", form = form)
+    return render_template("reset_password_request.html", form = form)
 
 # Password Reset Route
 @app.route("/reset_password/<token>", methods = ["GET", "POST"])
@@ -106,7 +106,7 @@ def reset_password(token):
 
     user = User.verify_reset_password_token(token)
 
-    if not user:
+    if user is None:
         flash("Invalid Token", "warning")
         return redirect(url_for("reset_password_request"))
 
