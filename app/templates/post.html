@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-section">
+                    <h1 class="article-title">{{ post.title }}</h1>
+                    <div class="article-metadata">
+                        <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
+                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
+                        <p class="article-content">{{ post.body }}</p>
+                        
+                        <div class="float-right-box">
+                                {% if post.author == current_user %}
+                                    <a href="/updatePost/{{ post.id }}" class="btn btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i></a>
+                                    <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
+                                    <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
+                                    <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
+
+                                    <!-- Edit Post Item Popup Dialog Box -->
+                                    <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ url_for('updatePost') }}" method="POST">
+                                                        <div class="form-group">
+                                                            <label>Post Title</label>
+                                                            <input type="hidden" name="id" value="{{post.id}}">
+                                                            <input type="text" class="form-control" name="title" value="{{post.title}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Post Content</label>
+                                                            <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button class="btn btn-success" type="submit">Update Post</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                {% else %}
+                                    <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
+                                    <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
+                                    <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
+                                {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
