@@ -56,7 +56,12 @@
                                 <div class="media-body">
                                     <div class="article-metadata">
                                         <a class="mr-2" href="{{ url_for('user', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
+                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                            {% if post.likes.count() < 2 %}
+                                                {{ post.likes.count() }} Like</small>
+                                            {% else %}
+                                                {{ post.likes.count() }} Likes</small>
+                                            {% endif %}
                                         
                                         <!-- Edit Post Item Popup Dialog Box -->
                                         <div id="editPost{{post.id}}" class="modal fade" role="dialog">
@@ -92,12 +97,16 @@
                                     <h2 class="article-title">{{ post.title }}</h2>
                                     <p class="article-content">{{ post.body }}</p>
                                     {% if post.author == current_user %}
-                                        <div class="float-right-box">
-                                            <a href="/updatePost/{{ post.id }}" class="btn btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i></a>
-                                            <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
-                                            <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
-                                            <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
+                                        <div class="row float-right-box col-md-12">
+                                            <a href="/updatePost/{{ post.id }}" class="btn col-md-3 btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&emsp;Edit</a>
+                                            <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn col-md-3 btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&emsp;Delete</a>
+                                            {% if current_user.has_liked_post(post) %}
+                                                <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-3 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
+                                            {% else %}
+                                                <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-3 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
+                                            {% endif %}
+                                            
+                                            <a href="#" class="btn col-md-3 btn-outline-secondary dislike-button"><i class="fas fa-comment"></i>&emsp;Comment</a>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -108,14 +117,22 @@
                                 <div class="media-body">
                                     <div class="article-metadata">
                                         <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
+                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                            {% if post.likes.count() < 2 %}
+                                                {{ post.likes.count() }} Like</small>
+                                            {% else %}
+                                                {{ post.likes.count() }} Likes</small>
+                                            {% endif %}
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
                                     <p class="article-content">{{ post.body }}</p>
-                                    <div class="float-right-box">
-                                        <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
-                                        <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
-                                        <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
+                                    <div class="row float-right-box col-md-12">
+                                        {% if current_user.has_liked_post(post) %}
+                                            <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-6 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
+                                        {% else %}
+                                            <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-6 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
+                                        {% endif %}
+                                        <a href="#" class="btn col-md-6 btn-outline-secondary dislike-button"><i class="fas fa-comment"></i>&emsp;Comment</a>
                                     </div>
                                 </div>
                             </article>
