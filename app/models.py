@@ -31,11 +31,11 @@ class User(UserMixin, db.Model):
     last_seen = db.Column(db.DateTime, default = datetime.utcnow)
     posts = db.relationship("Post", backref = "author", lazy = "dynamic")
 
-    # Followers Support in User Model
+    # Followers Support In User Model
     followed = db.relationship("Follow", foreign_keys = [Follow.follower_id], backref = db.backref("follower", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
     followers = db.relationship("Follow", foreign_keys = [Follow.followed_id], backref = db.backref("followed", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
 
-    # Liked
+    # Liked Support In User Model
     liked = db.relationship("PostLike", foreign_keys = "PostLike.user_id", backref = "user", lazy = "dynamic")
 
     def __repr__(self):
@@ -117,6 +117,7 @@ class Post(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.created_datetime}')"
 
+# POSTS LIKE Table
 class PostLike(db.Model):
 
     __tablename__ = "post_like"
