@@ -30,6 +30,7 @@ class User(UserMixin, db.Model):
     photo = db.Column(db.String(20), nullable = False, default = "default_user.jpg")
     last_seen = db.Column(db.DateTime, default = datetime.utcnow)
     posts = db.relationship("Post", backref = "author", lazy = "dynamic")
+    comments = db.relationship("Comment", backref = "commentor", lazy = "dynamic")
 
     # Followers Support In User Model
     followed = db.relationship("Follow", foreign_keys = [Follow.follower_id], backref = db.backref("follower", lazy = "joined"), lazy = "dynamic", cascade = "all, delete-orphan")
@@ -37,6 +38,9 @@ class User(UserMixin, db.Model):
 
     # Liked Support In User Model
     liked = db.relationship("PostLike", foreign_keys = "PostLike.user_id", backref = "user", lazy = "dynamic")
+
+    # Commented Support In User Model
+    commented = db.relationship("Comment", foreign_keys = "Comment.user_id", backref = "user", lazy = "dynamic")
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.photo}')"
@@ -95,6 +99,14 @@ class User(UserMixin, db.Model):
     def has_liked_post(self, post):
         return PostLike.query.filter(PostLike.user_id == self.id, PostLike.post_id == post.id).count() > 0
 
+    def comment_post(self, post):
+        if not self.has_commented_post(post):
+            comment = Comment(user_id = self.id, post_id = post.id)
+            db.session.add(comment)
+
+    def has_commented_post(self, post):
+        return Comment.query.filter(Comment.user_id == self.id, Comment.post_id == post.id).count() > 0
+
 
 @login.user_loader
 def load_user(id):
@@ -114,6 +126,8 @@ class Post(db.Model):
 
     likes = db.relationship("PostLike", backref = "post", lazy = "dynamic")
 
+    comments = db.relationship("Comment", backref = "post", lazy = "dynamic")
+
     def __repr__(self):
         return f"Post('{self.title}', '{self.created_datetime}')"
 
@@ -125,6 +139,20 @@ class PostLike(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"))
     post_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_TRANSACTION_POST.id"))
+
+# COMMENTS Table
+class Comment(db.Model):
+
+    __tablename__ = "comments"
+
+    id = db.Column(db.Integer, primary_key = True)
+    text = db.Column(db.String(2000))
+    user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"))
+    post_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_TRANSACTION_POST.id"))
+    timestamp = db.Column(db.DateTime(), default=datetime.utcnow, index=True)
+
+    def __repr__(self):
+        return f"Comment('{self.user_id}', '{self.post_id}', '{self.text}', '{self.timestamp}')"
 
 
 

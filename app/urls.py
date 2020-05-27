@@ -6,7 +6,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, PostForm, UpdateAccountForm, ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post
+from app.models import User, Post, Comment
 from app.email import send_password_reset_email
 from flask_mail import Message
 
@@ -37,9 +37,12 @@ def dashboard():
         query = current_user.followed_posts
 
     posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
+
+    comments = Comment.query.order_by(Comment.timestamp.desc())
+
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
 
-    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, show_followed = show_followed)
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -319,3 +322,22 @@ def like_action(post_id, action):
         db.session.commit()
 
     return redirect(request.referrer)
+
+@app.route("/post/<int:post_id>/comment", methods = ["GET", "POST"])
+@login_required
+def comment(post_id):
+
+    post = Post.query.filter_by(id = post_id).first_or_404()
+
+    if request.method == "POST":
+        comment = Comment(text = request.form["comment"], user_id = current_user.id, post_id = post.id)
+        db.session.add(comment)
+        db.session.commit()
+        flash("Your Comment Has Been Added To The Post Successfully!", "success")
+        return redirect(url_for("dashboard"))
+
+
+
+   
+
+    return render_template("dashboard.html")

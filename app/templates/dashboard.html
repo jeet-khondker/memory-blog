@@ -62,6 +62,12 @@
                                             {% else %}
                                                 {{ post.likes.count() }} Likes</small>
                                             {% endif %}
+                                            <small class="text-muted">&emsp;|&emsp;
+                                            {% if post.comments.count() < 2 %}
+                                                {{ post.comments.count() }} Comment</small>
+                                            {% else %}
+                                                {{ post.comments.count() }} Comments</small>
+                                            {% endif %}
                                         
                                         <!-- Edit Post Item Popup Dialog Box -->
                                         <div id="editPost{{post.id}}" class="modal fade" role="dialog">
@@ -96,6 +102,17 @@
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
                                     <p class="article-content">{{ post.body }}</p>
+
+                                    {% if post.comments %}
+                                        {% if post.comments.count() > 0 %}
+                                            <h4>All Comments</h4>
+                                            <hr>
+                                            {% for comment in post.comments %}
+                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented</small> {{ comment.text }} <small class="text-muted">{{ moment(comment.timestamp).fromNow() }}</small></p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %}
+
                                     {% if post.author == current_user %}
                                         <div class="row float-right-box col-md-12">
                                             <a href="/updatePost/{{ post.id }}" class="btn col-md-3 btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&emsp;Edit</a>
@@ -106,7 +123,7 @@
                                                 <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-3 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
                                             {% endif %}
                                             
-                                            <a href="#" class="btn col-md-3 btn-outline-secondary dislike-button"><i class="fas fa-comment"></i>&emsp;Comment</a>
+                                            <a href="{{ url_for('dashboard') }}" class="btn col-md-3 btn-outline-secondary" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
                                         </div>
                                     {% endif %}
                                 </div>
@@ -123,20 +140,62 @@
                                             {% else %}
                                                 {{ post.likes.count() }} Likes</small>
                                             {% endif %}
+                                            <small class="text-muted">&emsp;|&emsp;
+                                            {% if post.comments.count() < 2 %}
+                                                {{ post.comments.count() }} Comment</small>
+                                            {% else %}
+                                                {{ post.comments.count() }} Comments</small>
+                                            {% endif %}
                                     </div>
                                     <h2 class="article-title">{{ post.title }}</h2>
                                     <p class="article-content">{{ post.body }}</p>
+                                    
+                                    {% if post.comments %}
+                                        {% if post.comments.count() > 0 %}
+                                            <h4>All Comments</h4>
+                                            <hr>
+                                            {% for comment in post.comments %}
+                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented</small> {{ comment.text }} <small class="text-muted">{{ moment(comment.timestamp).fromNow() }}</small></p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endif %}
+                                    
                                     <div class="row float-right-box col-md-12">
                                         {% if current_user.has_liked_post(post) %}
                                             <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-6 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
                                         {% else %}
                                             <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-6 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
                                         {% endif %}
-                                        <a href="#" class="btn col-md-6 btn-outline-secondary dislike-button"><i class="fas fa-comment"></i>&emsp;Comment</a>
+                                        <a href="{{ url_for('dashboard') }}" class="btn col-md-6 btn-outline-secondary" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
                                     </div>
                                 </div>
                             </article>
                         {% endif %}
+
+                        <!-- Comment Post Popup Dialog Box -->
+                        <div id="comment{{post.id}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="text-center modal-title"><i class="fas fa-comment"></i>&emsp;Comment On Post {{ post.title }} | Post By {{ post.author.firstname }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ url_for('comment', post_id = post.id) }}" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="comment" placeholder="Comment">
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-success" type="submit">Leave Comment</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     {% endfor %}
                     <div class="page">
                         {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}

@@ -186,3 +186,9 @@ a.article-title:hover {
 .article-content {
   white-space: pre-wrap;
 }
+
+.comment-img {
+  height: 25px;
+  width: 25px;
+  margin-right: 16px;
+}

@@ -794,3 +794,547 @@ TypeError: '>' not supported between instances of 'method' and 'int'
 2020-05-23 15:34:36,057 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
 2020-05-23 15:36:04,545 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
 2020-05-23 15:42:56,467 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 16:35:20,624 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 16:35:32,271 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 20:52:23,667 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 20:53:53,067 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 20:56:36,992 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 21:12:05,670 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 21:12:31,289 ERROR: Exception on /userProfile/aswadia.mitul [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 234, in userProfile
+    return render_template("userProfile.html", posts = posts, user = user, total_posts = total_posts)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 48, in template
+    <button class="btn btn-success" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>&emsp;Send Message To {{ %(recipient)s, recipient = recipient }}</button>
+jinja2.exceptions.TemplateSyntaxError: unexpected '%'
+2020-05-25 21:16:47,874 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 21:19:12,967 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 21:23:08,871 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-25 21:24:38,664 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 08:54:47,980 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 08:55:14,371 ERROR: Exception on /send_message/aswadia.mitul [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", form = form, title = "Send Message", recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 09:01:56,879 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 09:02:21,617 ERROR: Exception on /send_message/aswadia.mitul [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", form = form, title = "Send Message", recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 09:10:20,557 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:38:35,091 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:38:55,714 ERROR: Exception on /send_message/aswadia.mitul [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("send_message.html", form = form, title = "Send Message", recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/send_message.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/send_message.html", line 10, in block "content"
+    <form action="{{ url_for('send_message', recipient = user.username) }}" method="POST">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 10:43:11,975 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:45:53,388 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:54:30,222 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:55:09,542 ERROR: Exception on /send_message/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", form = form, recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 10:58:53,307 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 10:59:24,579 ERROR: Exception on /send_message/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", username = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 11:08:57,530 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:09:29,366 ERROR: Exception on /send_message/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 11:13:49,679 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:14:13,669 ERROR: Exception on /send_message/aswadia.mitul [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 338, in send_message
+    return render_template("userProfile.html", recipient = recipient)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/userProfile.html", line 11, in block "content"
+    <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-26 11:16:03,371 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:20:15,946 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:25:46,094 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:26:16,648 ERROR: Exception on /send_message/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 332, in send_message
+    msg = Message(author = current_user, recipient = user, body = form.message.data)
+TypeError: __init__() got an unexpected keyword argument 'author'
+2020-05-26 11:35:18,878 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:51:34,109 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 11:51:41,812 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 12:49:49,387 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 12:49:58,998 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 13:00:52,315 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 17:18:15,537 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 18:28:06,338 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 18:28:45,422 ERROR: Exception on /post/14/comment [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 330, in comment
+    comment = Comment(text = request.form["comment"], user_id = current_user.id, post_id = post.id)
+NameError: name 'Comment' is not defined
+2020-05-26 18:29:45,176 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 19:46:36,117 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 19:46:53,658 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 41, in dashboard
+    comments = db.session.query(Post).filter_by(post_id = post.id)
+AttributeError: 'function' object has no attribute 'id'
+2020-05-26 19:53:03,190 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 19:53:21,178 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 41, in dashboard
+    comments = Comment.query.order_by(Comment.timestamp.desc())
+AttributeError: type object 'Comment' has no attribute 'timestamp'
+2020-05-26 19:56:21,340 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 19:56:29,534 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:01:34,085 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:04:01,891 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:28:06,077 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:28:12,089 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:34:29,360 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:34:46,190 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 45, in dashboard
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 130, in block "content"
+    {% if post_id in comment %}
+TypeError: argument of type 'Comment' is not iterable
+2020-05-26 20:35:56,799 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:39:59,843 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:40:05,129 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:40:27,987 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:40:31,076 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:44:12,785 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:44:29,976 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 45, in dashboard
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 138, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 930, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 883, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 857, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/loaders.py", line 129, in load
+    code = environment.compile(source, name, filename)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 638, in compile
+    self.handle_exception(source=source_hint)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 135, in template
+    {% endfor %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endfor'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2020-05-26 20:45:03,159 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 20:55:57,970 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 21:12:26,483 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-26 21:12:44,658 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 45, in dashboard
+    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 135, in block "content"
+    <p>{{ user.commented.firstname }} commented {{ comment.text }}</p>
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'user' is undefined
+2020-05-27 07:56:49,163 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 07:58:50,065 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:09:37,614 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:25:29,214 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:25:38,772 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:31:08,797 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:33:00,387 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:38:01,648 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:50:48,972 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 08:55:56,132 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 10:04:09,769 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 10:07:22,313 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 10:15:32,071 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 10:54:21,607 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-27 10:55:23,429 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
