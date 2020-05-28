@@ -1338,3 +1338,6 @@ jinja2.exceptions.UndefinedError: 'user' is undefined
 2020-05-27 10:15:32,071 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
 2020-05-27 10:54:21,607 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
 2020-05-27 10:55:23,429 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-28 16:55:22,804 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-28 17:41:30,391 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
+2020-05-28 18:52:27,006 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:54]
