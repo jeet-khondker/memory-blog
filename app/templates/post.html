@@ -5,55 +5,133 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content-section">
-                    <h1 class="article-title">{{ post.title }}</h1>
                     <div class="article-metadata">
+                        <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
                         <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}</small>
+                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                            {% if post.likes.count() < 2 %}
+                                {{ post.likes.count() }} Like</small>
+                            {% else %}
+                                {{ post.likes.count() }} Likes</small>
+                            {% endif %}
+                            <small class="text-muted">&emsp;|&emsp;
+                            {% if post.comments.count() < 2 %}
+                                {{ post.comments.count() }} Comment</small>
+                            {% else %}
+                                {{ post.comments.count() }} Comments</small>
+                            {% endif %}
+                        <hr>
+                        <h1 class="article-title">{{ post.title }}</h1>
                         <p class="article-content">{{ post.body }}</p>
-                        
-                        <div class="float-right-box">
-                                {% if post.author == current_user %}
-                                    <a href="/updatePost/{{ post.id }}" class="btn btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i></a>
-                                    <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                    <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
-                                    <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
-                                    <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
 
-                                    <!-- Edit Post Item Popup Dialog Box -->
-                                    <div id="editPost{{post.id}}" class="modal fade" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="{{ url_for('updatePost') }}" method="POST">
-                                                        <div class="form-group">
-                                                            <label>Post Title</label>
-                                                            <input type="hidden" name="id" value="{{post.id}}">
-                                                            <input type="text" class="form-control" name="title" value="{{post.title}}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Post Content</label>
-                                                            <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button class="btn btn-success" type="submit">Update Post</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                </div>
+                        {% if post.comments %}
+                            {% if post.comments.count() > 0 %}
+                                <h4>All Comments</h4>
+                                <hr>
+                                {% for comment in post.comments %}
+                                    <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented {{ moment(comment.timestamp).fromNow() }} : </small>{{ comment.text }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                        
+                        <div class="row float-right-box">
+                            {% if post.author == current_user %}
+                                <a href="/updatePost/{{ post.id }}" class="btn col-md-3 btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&emsp;Edit</a>
+                                <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn col-md-3 btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&emsp;Delete</a>
+                                {% if current_user.has_liked_post(post) %}
+                                    <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-3 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
+                                {% else %}
+                                    <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-3 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
+                                {% endif %}
+                                <a href="/post/{{ post.id }}" class="btn col-md-3 btn-outline-secondary comment_button" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
+
+                                <!-- Edit Post Item Popup Dialog Box -->
+                                <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url_for('updatePost') }}" method="POST">
+                                                    <div class="form-group">
+                                                        <label>Post Title</label>
+                                                        <input type="hidden" name="id" value="{{post.id}}">
+                                                        <input type="text" class="form-control" name="title" value="{{post.title}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Post Content</label>
+                                                        <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-success" type="submit">Update Post</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                </div>
+
+                                <!-- Comment Post Popup Dialog Box -->
+                                <div id="comment{{post.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="text-center modal-title"><i class="fas fa-comment"></i>&emsp;Comment On Post {{ post.title }} | Post By {{ post.author.firstname }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url_for('comment', post_id = post.id) }}" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="comment" placeholder="Comment">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-success" type="submit">Leave Comment</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            {% else %}
+                                {% if current_user.has_liked_post(post) %}
+                                    <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-6 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
                                 {% else %}
-                                    <a href="#" class="btn btn-outline-success like-button"><i class="far fa-thumbs-up"></i></a>
-                                    <a href="#" class="btn btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i></a>
-                                    <a href="#" class="btn btn-outline-secondary dislike-button"><i class="fas fa-comment"></i></a>
+                                    <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-6 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
                                 {% endif %}
+                                <a href="/post/{{ post.id }}" class="btn col-md-6 btn-outline-secondary comment_button" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
+
+                                <!-- Comment Post Popup Dialog Box -->
+                                <div id="comment{{post.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="text-center modal-title"><i class="fas fa-comment"></i>&emsp;Comment On Post {{ post.title }} | Post By {{ post.author.firstname }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url_for('comment', post_id = post.id) }}" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="comment" placeholder="Comment">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <button class="btn btn-success" type="submit">Leave Comment</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endif %}
                         </div>
                     </div>
                 </div>

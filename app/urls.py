@@ -173,7 +173,8 @@ def user(username):
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template("post.html", title = post.title, post = post)
+    comments = Comment.query.order_by(Comment.timestamp.desc())
+    return render_template("post.html", title = post.title, comments = comments, post = post)
 
 # Add A Post Route - CREATE Route
 @app.route("/addPost", methods = ["GET", "POST"])
@@ -335,9 +336,5 @@ def comment(post_id):
         db.session.commit()
         flash("Your Comment Has Been Added To The Post Successfully!", "success")
         return redirect(url_for("dashboard"))
-
-
-
-   
 
     return render_template("dashboard.html")

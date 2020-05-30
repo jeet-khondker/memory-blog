@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content-section">
-                    <h1 class="display-4 lead">Dashboard</h1>
                     <div class="row">
                         <div class="media col-md-6">
                             <img class="rounded-circle account-img" src="{{ photo }}">
@@ -100,7 +99,7 @@
                                         </div>
 
                                     </div>
-                                    <h2 class="article-title">{{ post.title }}</h2>
+                                    <h2 class="article-title"><a href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a></h2>
                                     <p class="article-content">{{ post.body }}</p>
 
                                     {% if post.comments %}
@@ -108,7 +107,7 @@
                                             <h4>All Comments</h4>
                                             <hr>
                                             {% for comment in post.comments %}
-                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented</small> {{ comment.text }} <small class="text-muted">{{ moment(comment.timestamp).fromNow() }}</small></p>
+                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented {{ moment(comment.timestamp).fromNow() }} : </small> {{ comment.text }}</p>
                                             {% endfor %}
                                         {% endif %}
                                     {% endif %}
@@ -147,7 +146,7 @@
                                                 {{ post.comments.count() }} Comments</small>
                                             {% endif %}
                                     </div>
-                                    <h2 class="article-title">{{ post.title }}</h2>
+                                    <h2 class="article-title"><a href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a></h2>
                                     <p class="article-content">{{ post.body }}</p>
                                     
                                     {% if post.comments %}
@@ -155,7 +154,7 @@
                                             <h4>All Comments</h4>
                                             <hr>
                                             {% for comment in post.comments %}
-                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented</small> {{ comment.text }} <small class="text-muted">{{ moment(comment.timestamp).fromNow() }}</small></p>
+                                                <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented {{ moment(comment.timestamp).fromNow() }} : </small>{{ comment.text }}</p>
                                             {% endfor %}
                                         {% endif %}
                                     {% endif %}
