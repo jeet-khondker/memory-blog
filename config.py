@@ -10,6 +10,7 @@ class Config(object):
             raise Exception(message)
 
     SECRET_KEY = os.environ.get("SECRET_KEY") or "the-quick-brown-fox-jumps-over-the-lazy-dog"
+    FLASK_ADMIN_SWATCH = "yeti"
 
     # DATABASE CONFIGURATION
     POSTGRES_URL = get_env_var("POSTGRES_URL")

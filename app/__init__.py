@@ -1,14 +1,17 @@
 import logging, os
 from logging.handlers import SMTPHandler, RotatingFileHandler
-from flask import Flask
+from flask import Flask, render_template, flash, redirect, render_template, url_for
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
 from flask_migrate import Migrate
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user, login_user, logout_user
 from flask_moment import Moment
 from flask_mail import Mail
 
 app = Flask(__name__)
+
 app.config.from_object(Config)
 
 db = SQLAlchemy(app)
@@ -53,5 +56,20 @@ if not app.debug:
         app.logger.setLevel(logging.INFO)
         app.logger.info("MemoryBlog StartUp")
 
-
 from app import urls, models, errors
+
+class AdminModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.email == app.config["MAIL_USERNAME"]
+
+class AdmininstrationView(AdminIndexView):
+    def is_accessible(self):
+        return current_user.is_authenticated and current_user.email == app.config["MAIL_USERNAME"]
+    
+admin = Admin(app, name = "Memory Blog Admininstration", template_mode = "bootstrap3", index_view = AdmininstrationView())
+
+admin.add_view(AdminModelView(models.User, db.session))
+admin.add_view(AdminModelView(models.Post, db.session))
+admin.add_view(AdminModelView(models.Comment, db.session))
+admin.add_view(AdminModelView(models.Follow, db.session))
+admin.add_view(AdminModelView(models.PostLike, db.session))
