@@ -55,18 +55,59 @@
                                 <div class="media-body">
                                     <div class="article-metadata">
                                         <a class="mr-2" href="{{ url_for('user', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
-                                            {% if post.likes.count() < 2 %}
-                                                {{ post.likes.count() }} Like</small>
-                                            {% else %}
-                                                {{ post.likes.count() }} Likes</small>
-                                            {% endif %}
-                                            <small class="text-muted">&emsp;|&emsp;
-                                            {% if post.comments.count() < 2 %}
-                                                {{ post.comments.count() }} Comment</small>
-                                            {% else %}
-                                                {{ post.comments.count() }} Comments</small>
-                                            {% endif %}
+                                        {% if post.likes.count() > 0 %}
+                                            <small class="text-muted" data-toggle="modal" data-target="#likes{{post.id}}">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                                {% if post.likes.count() < 2 %}
+                                                    {{ post.likes.count() }} Like</small>
+                                                {% else %}
+                                                    {{ post.likes.count() }} Likes</small>
+                                                {% endif %}
+                                                <small class="text-muted">&emsp;|&emsp;
+                                                {% if post.comments.count() < 2 %}
+                                                    {{ post.comments.count() }} Comment</small>
+                                                {% else %}
+                                                    {{ post.comments.count() }} Comments</small>
+                                                {% endif %}
+                                        {% else %}
+                                            <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                                {% if post.likes.count() < 2 %}
+                                                    {{ post.likes.count() }} Like</small>
+                                                {% else %}
+                                                    {{ post.likes.count() }} Likes</small>
+                                                {% endif %}
+                                                <small class="text-muted">&emsp;|&emsp;
+                                                {% if post.comments.count() < 2 %}
+                                                    {{ post.comments.count() }} Comment</small>
+                                                {% else %}
+                                                    {{ post.comments.count() }} Comments</small>
+                                                {% endif %}
+                                        {% endif %}
+
+                                        <!-- Likes Popup Dialog Box -->
+                                        <div id="likes{{post.id}}" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="text-center modal-title"><i class="far fa-thumbs-up"></i>&emsp;{{ post.likes.count() }}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {% if post.likes %}
+                                                            {% if post.likes.count() > 0 %}
+                                                                {% for like in post.likes %}
+                                                                    <p>
+                                                                        <img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + like.user.photo) }}">
+                                                                        <a href="{{ url_for('userProfile', username = like.user.username) }}">{{ like.user.firstname }} {{ like.user.middlename }} {{ like.user.lastname }}</a>
+                                                                    </p>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         
                                         <!-- Edit Post Item Popup Dialog Box -->
                                         <div id="editPost{{post.id}}" class="modal fade" role="dialog">
@@ -133,18 +174,33 @@
                                 <div class="media-body">
                                     <div class="article-metadata">
                                         <a class="mr-2" href="{{ url_for('userProfile', username = post.author.username) }}">{{ post.author.firstname }} {{ post.author.middlename }} {{ post.author.lastname }}</a>
-                                        <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
-                                            {% if post.likes.count() < 2 %}
-                                                {{ post.likes.count() }} Like</small>
-                                            {% else %}
-                                                {{ post.likes.count() }} Likes</small>
-                                            {% endif %}
-                                            <small class="text-muted">&emsp;|&emsp;
-                                            {% if post.comments.count() < 2 %}
-                                                {{ post.comments.count() }} Comment</small>
-                                            {% else %}
-                                                {{ post.comments.count() }} Comments</small>
-                                            {% endif %}
+                                        {% if post.likes.count() > 0 %}
+                                            <small class="text-muted" data-toggle="modal" data-target="#likes{{post.id}}">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                                {% if post.likes.count() < 2 %}
+                                                    {{ post.likes.count() }} Like</small>
+                                                {% else %}
+                                                    {{ post.likes.count() }} Likes</small>
+                                                {% endif %}
+                                                <small class="text-muted">&emsp;|&emsp;
+                                                {% if post.comments.count() < 2 %}
+                                                    {{ post.comments.count() }} Comment</small>
+                                                {% else %}
+                                                    {{ post.comments.count() }} Comments</small>
+                                                {% endif %}
+                                        {% else %}
+                                            <small class="text-muted">Posted {{ moment(post.created_datetime).fromNow() }}&emsp;|&emsp;
+                                                {% if post.likes.count() < 2 %}
+                                                    {{ post.likes.count() }} Like</small>
+                                                {% else %}
+                                                    {{ post.likes.count() }} Likes</small>
+                                                {% endif %}
+                                                <small class="text-muted">&emsp;|&emsp;
+                                                {% if post.comments.count() < 2 %}
+                                                    {{ post.comments.count() }} Comment</small>
+                                                {% else %}
+                                                    {{ post.comments.count() }} Comments</small>
+                                                {% endif %}
+                                        {% endif %}
                                     </div>
                                     <h2 class="article-title"><a href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a></h2>
                                     <p class="article-content">{{ post.body }}</p>
@@ -187,6 +243,32 @@
                                                 <button class="btn btn-success" type="submit">Leave Comment</button>
                                             </div>
                                         </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Likes Popup Dialog Box -->
+                        <div id="likes{{post.id}}" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="text-center modal-title"><i class="far fa-thumbs-up"></i>&emsp;{{ post.likes.count() }}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        {% if post.likes %}
+                                            {% if post.likes.count() > 0 %}
+                                                {% for like in post.likes %}
+                                                    <p>
+                                                        <img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + like.user.photo) }}">
+                                                        <a href="{{ url_for('userProfile', username = like.user.username) }}">{{ like.user.firstname }} {{ like.user.middlename }} {{ like.user.lastname }}</a>
+                                                    </p>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
