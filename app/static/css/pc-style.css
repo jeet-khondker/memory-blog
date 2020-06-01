@@ -2,6 +2,10 @@ body {
   background-color: #E9EBEE;
 }
 
+.bg-nav {
+  background-color: #D9DCFC !important;
+}
+
 .jumbotron {
   background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('/static/img/front-background.jpg') ;
   background-size: cover; 
