@@ -155,11 +155,6 @@ a.article-title:hover {
   margin-bottom: 10px;
 }
 
-.data-box-text {
-  font-size: 40px;
-  font-family: 'Oswald', sans-serif;
-}
-
 .follower-img {
   height: 50px;
   width: 50px;
@@ -230,4 +225,28 @@ a.article-title:hover {
   color: #fff !important;
   background-color: #6c757d !important;
   border-color: #6c757d !important;
+}
+
+a.info-box {
+  color: #000 !important;
+}
+
+.border-warning:hover {
+  background-color: #ffc107 !important;
+}
+
+.border-info:hover {
+  background-color: #17a2b8 !important;
+  color: #fff !important;
+}
+
+.blog {
+  background-color: #f2f6fa;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px 0px;
+}
+
+.follow-profile-link:hover {
+  text-decoration: none;
+  color: #000;
 }

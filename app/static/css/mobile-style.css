@@ -2,6 +2,884 @@
 iPad or Mobile Style CSS
 */
 
+/*  
+    Device: JioPhone 2
+*/
+@media (min-width: 240px) and (max-width: 240px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .title {
+        font-size: 1.5rem !important;
+        font-weight: bolder !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 15px !important;
+        padding: 9px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 10px !important;
+        padding: 9px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .page-title {
+        font-size: 1.5rem !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-top: 10px !important;
+        padding: 9px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .account-img {
+        height: 25px !important;
+        width: 25px !important;
+        margin-right: 5px !important;
+    }
+
+    h2#greeting {
+        font-size: 14px !important;
+    }
+
+    h2.account-heading {
+        font-size: 15px !important;
+    }
+
+    .media {
+        padding-left: 10px !important;
+    }
+
+    .article-img {
+        height: 25px !important;
+        width: 25px !important;
+        margin-right: 5px !important;
+    }
+
+    .article-title {
+        font-size: 16px !important;
+        font-weight: bolder !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .comment-header {
+        font-size: 16px !important;
+    }
+
+    .edit-account-img {
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    .account-desc {
+        margin: 10px !important;
+    }
+
+    .text-secondary {
+        font-size: 10px !important;
+    }
+
+    .accountEditHeader {
+        font-size: 1.5rem !important;
+    }
+
+    .dob {
+        display: block !important;
+    }
+
+    .info-box-label {
+        font-size: 10px !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .profile-stats {
+        font-size: 12px !important;
+    }
+
+    .blog-title-header {
+        font-size: 14px !important;
+    }
+
+    .date-content {
+        font-size: 20px !important;
+    }
+    
+    .userProfile_img {
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    .userProfile_mediabody {
+        padding-left: 5px !important;
+    }
+
+    .blog-title-header {
+        font-size: 15px !important;
+    }
+
+    .follow-title {
+        font-size: 15px !important;
+    }
+
+    .follower-img {
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    .card-title {
+        font-size: 1rem !important;
+    }
+
+    .userProfile_mediabody {
+        padding-left: 5px !important;
+    }
+
+    .media {
+        padding: 6px !important;
+    }
+
+    .badge-info {
+        font-size: 50% !important;
+    }
+
+    .follow {
+        font-size: 15px !important;
+    }
+}
+
+/*  
+    Device: Nokia Lumia 520
+    Device: iPhone 4
+    Device: iPhone 5/SE
+*/
+@media (min-width: 320px) and (max-width: 320px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 25px !important;
+        padding: 18px !important;
+        margin-bottom: 35px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 15px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-bottom: 25px !important;
+        margin-top: 20px !important;
+        padding: 50px 50px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .account-img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    h2#greeting {
+        font-size: 18px !important;
+    }
+
+    h2.account-heading {
+        font-size: 18px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .edit-account-img {
+        height: 30px !important;
+        width: 30px !important;
+    }
+
+    .account-heading {
+        font-size: 1.5rem !important;
+    }
+
+    .accountEditHeader {
+        font-size: 21px !important;
+    }
+
+    .editForm {
+        margin-top: -65px !important;
+    }
+
+    .dob {
+        flex: 0 0 90% !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .article-img {
+        height: 25px !important;
+        width: 25px !important;
+    }
+
+    .article-title {
+        font-size: 1.5rem !important;
+    }
+
+    .blog-title-header {
+        font-size: 1.5rem !important;
+    }
+
+    .date-content {
+        font-size: 20px !important;
+    }
+
+    .article-title {
+        font-size: 25px !important;
+    }
+
+    .follow-title {
+        font-size: 1.5rem !important;
+    }
+
+    .userProfile {
+        padding-left: 0px !important;
+    }
+
+    .userProfile_img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    .media {
+        padding: 10px !important;
+    }
+
+}
+
+/*  
+    Device: Blackberry Z30 
+    Device: Microsoft Lumia 950
+    Device: Moto G4
+    Device: Nexus 5
+    Device: Galaxy S5
+*/
+@media (min-width: 360px) and (max-width: 360px) {
+    .left-middle-content {
+        margin-top: -20px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 15px !important;
+        padding: 18px !important;
+        margin-bottom: 37px !important;
+    }
+    
+    .right-middle-content-passwordreset {
+        margin-bottom: 25px !important;
+        margin-top: 20px !important;
+        padding: 50px 50px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 10px !important;
+        margin-bottom: 30px !important;
+    }
+
+    h2#greeting {
+        font-size: 19px !important;
+    }
+
+    h2.account-heading {
+        font-size: 30px !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .article-title {
+        font-size: 25px !important;
+    }
+
+    .edit-account-img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    .accountEditHeader {
+        font-size: 25px !important;
+    }
+
+    .dob {
+        flex: 0 0 90% !important;
+    }
+
+    .blog-title-header {
+        font-size: 29px !important;
+    }
+
+    .date-content {
+        font-size:  25px !important;
+    }
+
+    .card {
+        margin: 10px 0px !important;
+    }
+
+    .editForm {
+        margin-top: -65px !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .userProfile_img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    .follow-title {
+        font-size: 3rem !important;
+    }
+
+}
+
+/*
+    Device: iPhone 6/7/8
+    Device: iPhone X
+*/
+@media (min-width: 375px) and (max-width: 375px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 20px !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 20px !important;
+        padding: 19px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-top: 20px !important;
+        padding: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .datepicker {
+        width: 63% !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    h2#greeting {
+        font-size: 22px !important;
+    }
+
+    h2.account-heading {
+        font-size: 40px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .article-title {
+        font-size: 25px !important;
+    }
+
+    .edit-account-img {
+        height: 75px !important;
+        width: 75px !important;
+    }
+
+    .editForm {
+        margin-top: -80px !important;
+    }
+
+    .dob {
+        flex: 0 0 91% !important;
+    }
+
+    .blog-title-header {
+        font-size: 30px !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .follow-title {
+        font-size: 30px !important;
+    }
+
+    .userProfile_img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+}
+
+/*
+    Device: LG Optimus L70
+    Device: Nexus 4
+*/
+@media (min-width: 384px) and (max-width: 384px) {
+    .left-middle-content {
+        margin-top: -20px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 20px !important;
+        padding: 18px !important;
+        margin-bottom: 37px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-bottom: 25px !important;
+        margin-top: 20px !important;
+        padding: 50px 50px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 10px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .dob {
+        flex: 0 0 91% !important;
+    }
+
+    .card {
+        margin: 10px 0px !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    h2#greeting {
+        font-size: 20px !important;
+    }
+
+    h2.account-heading {
+        font-size: 20px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
+
+    .edit-account-img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    .accountEditHeader {
+        font-size: 27px !important;
+    }
+
+    .editForm {
+        margin-top: -65px !important;
+    }
+
+    .blog-title-header {
+        font-size: 30px !important;
+    }
+
+    .userProfile_img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+}
+
+/*
+    Device: Pixel 2
+    Device: Pixel 2 XL
+*/
+@media (min-width: 411px) and (max-width: 411px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 25px !important;
+        padding: 25px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 15px !important;
+        padding: 25px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .datepicker {
+        width: 215px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-top: 25px !important;
+        padding: 25px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    h2#greeting {
+        font-size: 20px !important;
+    }
+
+    h2.account-heading {
+        font-size: 24px !important;
+    }
+
+    .article-title {
+        font-size: 25px !important;
+    }
+
+    .edit-account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .editForm {
+        margin-top: -100px !important;
+    }
+
+    .dob {
+        flex: 0 0 92% !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .userProfile_img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
+
+    .blog-title-header {
+        font-size: 2rem !important;
+    }
+
+}
+
+/*  
+    Device: Nexus 5X
+    Device: Nexus 6
+    Device: Nexus 6P
+*/
+@media (min-width: 412px) and (max-width: 412px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-register {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .datepicker {
+        width: 100% !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    h2#greeting {
+        font-size: 20px !important;
+    }
+
+    h2.account-heading {
+        font-size: 30px !important;
+    }
+
+    .edit-account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .userProfile_img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .dob {
+        flex: 0 0 92% !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .editForm {
+        margin-top: -65px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
+
+    .blog-title-header {
+        font-size: 2rem !important;
+    }
+
+}
+
+/*  
+    Device: iPhone 6/7/8 Plus
+*/
+@media (min-width: 414px) and (max-width: 414px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 35px !important;
+        padding: 30px !important;
+        margin-bottom: 35px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: 30px !important;
+        padding: 30px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .datepicker {
+        width: 65% !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin-top: 30px !important;
+        padding: 30px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    h2#greeting {
+        font-size: 23px !important;
+    }
+
+    .userProfile_img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .edit-account-img {
+        height: 100px !important;
+        width: 100px !important;
+    }
+
+    .editForm {
+        margin-top: -80px !important;
+    }
+
+    .dob {
+        flex: 0 0 92% !important;
+    }
+
+    .follow-title {
+        font-size: 1.5rem !important;
+    }
+
+    .blog-title-header {
+        font-size: 2rem !important;
+    }
+
+}
+
+/*  
+    Device: Nokia N9
+*/
+@media (min-width: 480px) and (max-width: 480px) {
+
+    .left-middle-content {
+        margin-top: 0px !important;
+        text-align: center !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 25px !important;
+        padding: 20px !important;
+        margin-bottom: 25px !important;
+    }
+
+    .right-middle-content-register {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .right-middle-content-passwordreset {
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .dob {
+        flex: 0 0 93% !important;
+    }
+
+    .editForm {
+        margin-top: -100px !important;
+    }
+
+    .accountEditHeader {
+        font-size: 2rem !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
+    .info-box {
+        margin-bottom: 10px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
+
+}
+
 @media (min-width: 500px) and (max-width: 575px) {
 
     .jumbotron {
@@ -59,6 +937,21 @@ iPad or Mobile Style CSS
         margin: 10px !important;
     }
 
+}
+
+/* 
+    Device: Blackberry PlayBook
+    Device: Nexus 7
+*/
+
+@media (min-width: 600px) and (max-width: 600px) {
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -120,6 +1013,32 @@ iPad or Mobile Style CSS
 
 }
 
+/* Device: Microsoft Lumia 550 */
+@media (min-width: 640px) and (max-width: 640px) {
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+    .follow-title {
+        font-size: 2rem !important;
+    }
+
+}
+
+/*  
+    Device: Kindle Fire HDX
+    Device: Nexus 10
+*/
+@media (min-width: 800px) and (max-width: 800px) {
+    .btn {
+        margin-bottom: 10px !important;
+    }
+}
+
+/*  
+    Device: iPad Mini
+    Device: iPad
+*/
 @media (min-width: 768px) and (max-width: 991px) {
     .edit_button, .delete-button, .dislike-button, .like-button, .comment_button {
         flex: 0 0 100% !important;
@@ -127,6 +1046,10 @@ iPad or Mobile Style CSS
     }
 }
 
+/*  
+    Device: iPad Mini
+    Device: iPad
+*/
 @media (min-width: 768px) and (max-width: 1010px) {
 
     .jumbotron {
@@ -208,6 +1131,11 @@ iPad or Mobile Style CSS
         max-width: 100%;
     }
 
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
     .card {
         margin: 10px;
     }
@@ -215,6 +1143,7 @@ iPad or Mobile Style CSS
     .date-content {
         flex: 0 0 25% !important;
         max-width: 25%;
+        font-size: 25px !important;
     }
 
     .post-content {
@@ -244,6 +1173,35 @@ iPad or Mobile Style CSS
         flex: 0 0 75% !important;
     }
 
+    .btn {
+        margin-bottom: 10px !important;
+    }
+
+}
+
+/* Device: iPad Pro */
+@media (min-width: 1024px) and (max-width: 1024px) {
+
+    .jumbotron {
+        background-image: none !important;
+        height: 0px !important;
+        padding: 0px !important;
+    }
+
+    .datepicker {
+        max-width: 71.5% !important;
+        flex: 0 0 70% !important;
+    }
+
+    .media {
+        padding: 25px 20px !important;
+    }
+
+    .info-box-label {
+        font-size: 1rem !important;
+        font-weight: bolder !important;
+    }
+
 }
 
 @media (min-width: 1011px) and (max-width: 1199px) {
@@ -253,7 +1211,7 @@ iPad or Mobile Style CSS
     }
 
     .right-middle-content-register {
-        margin-top: -35px !important;
+        margin-top: 50px !important;
         flex: 0 0 50% !important;
         max-width: 50% !important;
     }
@@ -288,11 +1246,7 @@ iPad or Mobile Style CSS
         flex: 0 0 100% !important;
     }
 
-    .info-box {
-        flex: 0 0 100% !important;
-        max-width: 100%;
-        margin: 10px;
-    }
+    
 
     .date-content {
         flex: 0 0 25% !important;
@@ -335,6 +1289,27 @@ iPad or Mobile Style CSS
         flex: 0 0 69% !important;
     }
 
+}
+
+/* Device: Laptop With MDPI Screen */
+@media (min-width: 1280px) and (max-width: 1280px) {
+    .jumbotron {
+        padding-top: 125px !important;
+        max-height: 100% !important;
+        padding-bottom: 60% !important;
+    }
+
+    .left-middle-content {
+        margin-top: 150px !important;
+    }
+
+    .right-middle-content-login {
+        margin-top: 50px !important;
+    }
+
+    .right-middle-content-register {
+        margin-top: -100px !important;
+    }
 }
 
 

@@ -29,6 +29,7 @@
                                 {% endif %}
                             </div>
                         </div>
+
                         <div class="col-md-6 text-center editForm">
                             <h1 class = "accountEditHeader text-center"><i class="fas fa-edit"></i>&emsp;Edit Your Information</h1>
                             {% with messages = get_flashed_messages(with_categories=true) %}
@@ -117,37 +118,37 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-4 info-box">
-                                <div class="card text-white bg-primary">
+                                <div class="card border-primary">
                                     <div class="card-body">
+                                        <h1 class = "profile-stats" style="float: left; font-weight: bolder;">{{ total_posts }}</h1>
                                         {% if total_posts <= 1 %}
-                                            <h2 class="text-left data-box-text" style="float: left;"><i class="fas fa-blog"></i>&emsp;Post</h2>
+                                            <h3 class="info-box-label" style="float: right; font-weight: lighter;">Post</h3>
                                         {% else %}
-                                            <h2 class="text-left data-box-text" style="float: left;"><i class="fas fa-blog"></i>&emsp;Posts</h2>
+                                            <h3 class="info-box-label" style="float: right; font-weight: lighter;">Posts</h3>
                                         {% endif %}
-                                        <h1 class="text-right data-box-text" style="float: right;">{{ total_posts }}</h1>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4 info-box">
-                                <a href="{{ url_for('followers', username = user.username) }}">
-                                    <div class="card bg-warning">
+                                <a class="info-box" href="{{ url_for('followers', username = user.username) }}">
+                                    <div class="card border-warning">
                                         <div class="card-body">
+                                            <h1 class = "profile-stats" style="float: left; font-weight: bolder;">{{ user.followers.count() }}</h1>
                                             {% if user.followers.count() <= 1 %}
-                                                <h2 class="text-left data-box-text" style="float: left;"><i class="fas fa-rss"></i>&emsp;Follower</h2>
+                                                <h3 class="info-box-label" style="float: right; font-weight: lighter;">Follower</h3>
                                             {% else %}
-                                                <h2 class="text-left data-box-text" style="float: left;"><i class="fas fa-rss"></i>&emsp;Followers</h2>
+                                                <h3 class="info-box-label" style="float: right; font-weight: lighter;">Followers</h3>
                                             {% endif %}
-                                            <h1 class="text-right data-box-text" style="float: right;">{{ user.followers.count() }}</h1>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-md-4 info-box">
-                                <a href="{{ url_for('.followed_by', username=user.username) }}">
-                                    <div class="card text-white bg-info">
+                                <a class="info-box" href="{{ url_for('.followed_by', username=user.username) }}">
+                                    <div class="card border-info">
                                         <div class="card-body">
-                                            <h2 class="text-left data-box-text" style="float: left;"><i class="fas fa-check"></i>&emsp;Following</h2>
-                                            <h1 class="text-right data-box-text" style="float: right;">{{ user.followed.count() }}</h1>
+                                            <h1 class = "profile-stats" style="float: left; font-weight: bolder;">{{ user.followed.count() }}</h1>
+                                            <h3 class="info-box-label" style="float: right; font-weight: lighter;">Following</h3>
                                         </div>
                                     </div>
                                 </a>
@@ -161,9 +162,9 @@
                             {% if posts.items|length < 1 %}
                                 <h3 class="text-center">Currently, you dont have any posts.</h3>
                             {% else %}
-                                <h1 class = "text-center"><i class="fas fa-blog"></i>&emsp;Your Blog Posts</h1>
+                                <h1 class = "blog-title-header text-center"><i class="fas fa-blog"></i>&emsp;Your Blog Posts</h1>
                                 {% for post in posts.items %}
-                                    <div class="card">
+                                    <div class="card blog">
                                         <div class="card-body row">
                                             <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
                                             <div class="col-md-10 post-content">

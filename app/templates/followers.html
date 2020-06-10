@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content-section">
-                    <h1 class="display-4 lead">{{ title }} {{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h1>
+                    <h1 class="display-4 lead text-center follow-title">{{ title }} <a class="follow-profile-link" href="{{ url_for('userProfile', username = user.username) }}">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</a></h1>
                     <table class="table table-hover followers">
                         <thead>
                             <tr>
@@ -23,10 +23,14 @@
                                 <tr>
                                     <td>
                                         <a href="{{ url_for('userProfile', username = follow.user.username) }}">
-                                            <img class="rounded-circle follower-img" src = "{{ url_for('static', filename = 'profile_photos/' + follow.user.photo) }}">
-                                            {{ follow.user.firstname }} {{ follow.user.middlename }} {{ follow.user.lastname }}
+                                            <img class="rounded-circle follower-img d-block d-sm-none" src = "{{ url_for('static', filename = 'profile_photos/' + follow.user.photo) }}">
                                             
-
+                                            <!-- Hidden Only On Extra Small Devices -->
+                                            <span class="d-none d-sm-block">
+                                                <img class="rounded-circle follower-img" src = "{{ url_for('static', filename = 'profile_photos/' + follow.user.photo) }}">
+                                                {{ follow.user.firstname }} {{ follow.user.middlename }} {{ follow.user.lastname }}
+                                            </span>
+                                            
                                         </a>
                                     </td>
                                     <td>
