@@ -2432,3 +2432,200 @@ sqlalchemy.exc.DataError: (psycopg2.errors.StringDataRightTruncation) value too 
 2020-06-10 10:09:21,552 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
 2020-06-10 10:21:25,044 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
 2020-06-10 10:23:49,810 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 15:31:34,879 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 15:34:09,627 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 15:49:09,784 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 15:49:17,358 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:34:36,693 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:35:35,778 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:39:39,963 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:40:52,401 ERROR: Exception on /register [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 78, in register
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 39, in validate_dob
+    if self.dob.data > datetime(2010, 1, 1):
+TypeError: can't compare datetime.datetime to datetime.date
+2020-06-10 16:44:10,870 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:44:52,983 ERROR: Exception on /register [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 78, in register
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 39, in validate_dob
+    if self.dob.data > datetime.date(2010, 1, 1):
+TypeError: descriptor 'date' requires a 'datetime.datetime' object but received a 'int'
+2020-06-10 16:47:49,074 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 16:49:31,795 ERROR: Exception on /register [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 78, in register
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 39, in validate_dob
+    if self.dob.data > datetime.date(2010, 1, 1):
+TypeError: descriptor 'date' requires a 'datetime.datetime' object but received a 'int'
+2020-06-10 16:53:13,363 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:15:34,940 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:32:11,138 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:33:31,227 ERROR: Exception on /user/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 149, in user
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 66, in validate_dob
+    if datetime.today().strftime('%Y-%m-%d') - self.dob.data < 10:
+AttributeError: module 'datetime' has no attribute 'today'
+2020-06-10 17:36:28,114 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:38:59,569 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:39:45,339 ERROR: Exception on /user/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 149, in user
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 66, in validate_dob
+    if datetime.today().strftime('%Y-%m-%d') - self.dob.data < 10:
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.date'
+2020-06-10 17:43:56,169 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:48:09,281 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 17:48:46,251 ERROR: Exception on /user/aswadia.mitul [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 149, in user
+    if form.validate_on_submit():
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
+    return self.is_submitted() and self.validate()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 310, in validate
+    return super(Form, self).validate(extra)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/form.py", line 152, in validate
+    if not field.validate(self, extra):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 206, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/wtforms/fields/core.py", line 226, in _run_validation_chain
+    validator(form, self)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/forms.py", line 66, in validate_dob
+    if datetime.date.today() - self.dob.data < 10:
+TypeError: '<' not supported between instances of 'datetime.timedelta' and 'int'
+2020-06-10 17:56:53,768 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
