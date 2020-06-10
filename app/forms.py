@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from datetime import date
 from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, DateField
@@ -34,6 +35,11 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
 
+    def validate_dob(self, dob):
+        today = date.today()
+        if today.year - self.dob.data.year - ((today.month, today.day) < (self.dob.data.month, self.dob.data.day)) < 10:
+            raise ValidationError("You Need To Be Atleast 10 Years To Use This System!")
+
 # User Profile Update Form
 class UpdateAccountForm(FlaskForm):
     username = StringField("Username", validators = [DataRequired(message = "Username is required.")], render_kw = {"placeholder": "Username"})
@@ -56,6 +62,11 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email = email.data).first()
             if user is not None:
                 raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
+
+    def validate_dob(self, dob):
+        today = date.today()
+        if today.year - self.dob.data.year - ((today.month, today.day) < (self.dob.data.month, self.dob.data.day)) < 10:
+            raise ValidationError("You Need To Be Atleast 10 Years!")
 
 # Post Form
 class PostForm(FlaskForm):
