@@ -120,6 +120,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(10485760))
+    post_photo = db.Column(db.String(20))
     created_datetime = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     updated_datetime = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), nullable = False)
