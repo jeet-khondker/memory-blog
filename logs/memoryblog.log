@@ -2629,3 +2629,164 @@ Traceback (most recent call last):
     if datetime.date.today() - self.dob.data < 10:
 TypeError: '<' not supported between instances of 'datetime.timedelta' and 'int'
 2020-06-10 17:56:53,768 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 19:45:03,422 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 19:55:18,124 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-10 20:06:10,946 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 08:07:24,174 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 08:09:33,906 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 08:18:49,290 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 09:59:18,600 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 09:59:26,950 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:00:00,547 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:00:03,590 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:00:54,699 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:03:52,013 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:03:59,062 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:05:02,783 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:05:40,411 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:05:47,321 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 10:05:53,243 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:11:06,049 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:14:57,160 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:25:37,055 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:37:04,072 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:50:49,087 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 20:51:47,573 ERROR: Exception on /addPost [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 208, in new_post
+    new_post = Post(title = post_title, body = post_content, postPhoto = post_photo_file, author = current_user)
+  File "<string>", line 4, in __init__
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/sqlalchemy/orm/state.py", line 433, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 178, in raise_
+    raise exception
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/sqlalchemy/orm/state.py", line 430, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/sqlalchemy/ext/declarative/base.py", line 840, in _declarative_constructor
+    "%r is an invalid keyword argument for %s" % (k, cls_.__name__)
+TypeError: 'postPhoto' is an invalid keyword argument for Post
+2020-06-11 21:07:13,227 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 21:11:25,233 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 39, in dashboard
+    post = Post.query.get_or_404(post_id)
+NameError: name 'post_id' is not defined
+2020-06-11 21:13:56,962 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 21:19:28,586 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 22:30:54,333 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 22:34:07,109 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 22:41:37,415 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-11 22:48:53,390 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 08:46:50,210 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 08:53:12,550 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 08:57:49,194 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 09:06:16,331 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 09:21:00,641 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 09:23:29,685 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 09:34:15,669 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 10:07:43,401 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 10:08:12,122 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 10:34:18,276 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 10:34:33,209 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 47, in dashboard
+    return render_template("dashboard.html", photo = photo, post_photo = post_photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 62, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 122, in block "content"
+    {{ form.hidden_tag() }}
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2020-06-12 10:48:55,609 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 18:35:48,263 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 18:42:43,282 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 18:55:42,809 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 18:57:01,389 ERROR: Exception on /updatePost [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 230, in updatePost
+    post.post_photo = save_post_photo(request.files["post_photo"])
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 189, in save_post_photo
+    postImg = Image.open(postForm_photo)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/PIL/Image.py", line 2862, in open
+    "cannot identify image file %r" % (filename if filename else fp)
+PIL.UnidentifiedImageError: cannot identify image file <FileStorage: '' ('application/octet-stream')>
+2020-06-12 18:59:43,540 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 19:29:11,949 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 19:43:21,716 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 19:46:23,498 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 19:49:31,269 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 19:52:31,922 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 20:05:21,616 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 20:11:37,103 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 20:19:03,734 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 20:25:08,496 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-12 20:33:32,152 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
