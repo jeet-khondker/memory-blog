@@ -44,33 +44,33 @@
                                 {% endif %}
                             {% endwith %}
                             <form action="" method="POST" enctype="multipart/form-data" novalidate>
-                            {{ form.hidden_tag() }}
+                                {{ form.hidden_tag() }}
                                 <div class="form-group row">
-                                <label for="username" class="col-md-3 col-form-label">Username</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="{{ current_user.username }}">
-                                </div>
-                                {% for error in form.username.errors %}
-                                    <span style="color: red;">{{ error }}</span>
-                                {% endfor %}
-                                </div>
-                                <div class="form-group row">
-                                <label for="firstname" class="col-md-3 col-form-label">First Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="firstname" placeholder="First Name" value="{{ current_user.firstname }}">
-                                </div>
-                                {% for error in form.firstname.errors %}
-                                    <span style="color: red;">{{ error }}</span>
-                                {% endfor %}
+                                    <label for="username" class="col-md-3 col-form-label">Username</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="{{ current_user.username }}">
+                                    </div>
+                                    {% for error in form.username.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
                                 </div>
                                 <div class="form-group row">
-                                <label for="middlename" class="col-md-3 col-form-label">Middle Name</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="{{ current_user.middlename }}">
+                                    <label for="firstname" class="col-md-3 col-form-label">First Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="firstname" placeholder="First Name" value="{{ current_user.firstname }}">
+                                    </div>
+                                    {% for error in form.firstname.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
                                 </div>
-                                {% for error in form.middlename.errors %}
-                                    <span style="color: red;">{{ error }}</span>
-                                {% endfor %}
+                                <div class="form-group row">
+                                    <label for="middlename" class="col-md-3 col-form-label">Middle Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="middlename" placeholder="Middle Name" value="{{ current_user.middlename }}">
+                                    </div>
+                                    {% for error in form.middlename.errors %}
+                                        <span style="color: red;">{{ error }}</span>
+                                    {% endfor %}
                                 </div>
                                 <div class="form-group row">
                                     <label for="lastname" class="col-md-3 col-form-label">Last Name</label>
@@ -109,7 +109,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="form-group">
-                                {{ form.submit(class="btn btn-block btn-outline-info") }}
+                                    {{ form.submit(class="btn btn-block btn-outline-info") }}
                                 </div>
                             </form>
                         </div>
@@ -167,11 +167,16 @@
                                     <div class="card blog">
                                         <div class="card-body row">
                                             <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
-                                            <div class="col-md-10 post-content">
+                                            <div class="col-md-8 post-content">
                                                 <h2 class="card-title">
                                                     <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
                                                 </h2>
                                                 <p class="card-text" style="white-space: pre-wrap;">{{ post.body }}</p>
+                                            </div>
+                                            <div class="col-md-2 col-xs-12">
+                                                {% if post.post_photo %}
+                                                    <img class="img-thumbnail thumbnail_blog_img" src="{{ url_for('static', filename = 'post_photos/' + post.post_photo) }}">
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

@@ -72,6 +72,7 @@ class UpdateAccountForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField("Title", validators = [DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
     body = TextAreaField("Body", validators = [DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
+    post_photo = FileField("Post Photo", validators = [FileAllowed(["jpg", "png"])])
     submit = SubmitField("Post")
 
 # Reset Password Request Form

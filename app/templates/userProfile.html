@@ -107,11 +107,16 @@
                                     <div class="card blog">
                                         <div class="card-body row">
                                             <div class="col-md-2 text-center date-content"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{ post.created_datetime.strftime('%b') }}<br/>{{ post.created_datetime.strftime('%d') }}, {{ post.created_datetime.strftime('%Y') }}</div>
-                                            <div class="col-md-10 userProfile_blog">
+                                            <div class="col-md-8 userProfile_blog">
                                                 <h2 class="card-title">
                                                     <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
                                                 </h2>
                                                 <p class="card-text" style="white-space: pre-wrap;">{{ post.body }}</p>
+                                            </div>
+                                            <div class="col-md-2 col-xs-12">
+                                                {% if post.post_photo %}
+                                                    <img class="img-thumbnail thumbnail_blog_img" src="{{ url_for('static', filename = 'post_photos/' + post.post_photo) }}">
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

@@ -42,7 +42,9 @@ def dashboard():
 
     photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
 
-    return render_template("dashboard.html", photo = photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
+    post_photo = url_for('static', filename = 'post_photos/' + Post.post_photo)
+
+    return render_template("dashboard.html", photo = photo, post_photo = post_photo, title = "Dashboard", posts = posts, comments = comments, show_followed = show_followed)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -176,6 +178,20 @@ def post(post_id):
     comments = Comment.query.order_by(Comment.timestamp.desc())
     return render_template("post.html", title = post.title, comments = comments, post = post)
 
+# Save Post Photo Route
+def save_post_photo(postForm_photo):
+    random_hex = secrets.token_hex(8)
+    _, fileExtension = os.path.splitext(postForm_photo.filename)
+    post_photo_filename = random_hex + fileExtension
+    post_photo_path = os.path.join(app.root_path, "static/post_photos", post_photo_filename)
+
+    # output_size = (125, 125)
+    postImg = Image.open(postForm_photo)
+    # img.thumbnail(output_size)
+    postImg.save(post_photo_path)
+
+    return post_photo_filename
+
 # Add A Post Route - CREATE Route
 @app.route("/addPost", methods = ["GET", "POST"])
 @login_required
@@ -186,8 +202,10 @@ def new_post():
         post_title = request.form["title"]
         post_content = request.form["body"]
 
+        post_photo_file = save_post_photo(request.files["post_photo"])
+
         # Storing Data in Post Model
-        new_post = Post(title = post_title, body = post_content, author = current_user)
+        new_post = Post(title = post_title, body = post_content, post_photo = post_photo_file, author = current_user)
 
         # Adding in DB
         try:
@@ -209,11 +227,15 @@ def updatePost():
 
         post.title = request.form["title"]
         post.body = request.form["body"]
+        if request.files["post_photo"]:
+            post.post_photo = save_post_photo(request.files["post_photo"])
         post.updated_datetime = datetime.utcnow()
 
         db.session.commit()
         flash("Post Updated Successfully!", "success")
-        return redirect(url_for("dashboard"))
+        
+        post_photo = url_for('static', filename = 'post_photos/' + post.post_photo)
+        return redirect(url_for("dashboard", post_photo = post_photo))
 
 # Delete Post Route
 @app.route("/deletePost/<int:id>")

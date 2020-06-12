@@ -250,3 +250,21 @@ a.info-box {
   text-decoration: none;
   color: #000;
 }
+
+.post_image {
+  width: 100%;
+  margin-bottom: 15px !important;
+}
+
+.button-panel {
+  margin: 0 0%;
+}
+
+.thumbnail_blog_img {
+  width: 100%;
+  float: right;
+}
+
+.modal-button-panel {
+  margin: 0 0%;
+}
