@@ -163,6 +163,10 @@ iPad or Mobile Style CSS
     .follow {
         font-size: 15px !important;
     }
+
+    .news-feed {
+        font-size: 1.5rem !important;
+    }
 }
 
 /*  
@@ -283,6 +287,10 @@ iPad or Mobile Style CSS
         padding: 10px !important;
     }
 
+    .news-feed {
+        font-size: 2.5rem !important;
+    }
+
 }
 
 /*  
@@ -383,6 +391,10 @@ iPad or Mobile Style CSS
         font-size: 3rem !important;
     }
 
+    .news-feed {
+        font-size: 2.5rem !important;
+    }
+
 }
 
 /*
@@ -474,6 +486,10 @@ iPad or Mobile Style CSS
         width: 50px !important;
     }
 
+    .news-feed {
+        font-size: 2.5rem !important;
+    }
+
 }
 
 /*
@@ -561,6 +577,10 @@ iPad or Mobile Style CSS
     .userProfile_img {
         height: 50px !important;
         width: 50px !important;
+    }
+
+    .news-feed {
+        font-size: 2.5rem !important;
     }
 
 }
@@ -1033,6 +1053,16 @@ iPad or Mobile Style CSS
     .btn {
         margin-bottom: 10px !important;
     }
+
+    .post-content {
+        flex: 0 0 58% !important;
+        max-width: 58% !important;
+    }
+
+    .photo-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
 }
 
 /*  
@@ -1043,6 +1073,16 @@ iPad or Mobile Style CSS
     .edit_button, .delete-button, .dislike-button, .like-button, .comment_button {
         flex: 0 0 100% !important;
         max-width: 100%;
+    }
+
+    .post-content {
+        flex: 0 0 58% !important;
+        max-width: 58% !important;
+    }
+
+    .photo-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 }
 
@@ -1177,6 +1217,16 @@ iPad or Mobile Style CSS
         margin-bottom: 10px !important;
     }
 
+    .post-content {
+        flex: 0 0 58% !important;
+        max-width: 58% !important;
+    }
+
+    .photo-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
 }
 
 /* Device: iPad Pro */
@@ -1200,6 +1250,16 @@ iPad or Mobile Style CSS
     .info-box-label {
         font-size: 1rem !important;
         font-weight: bolder !important;
+    }
+
+    .post-content {
+        flex: 0 0 58% !important;
+        max-width: 58% !important;
+    }
+
+    .photo-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 
 }
@@ -1246,8 +1306,6 @@ iPad or Mobile Style CSS
         flex: 0 0 100% !important;
     }
 
-    
-
     .date-content {
         flex: 0 0 25% !important;
         max-width: 25%;
@@ -1266,6 +1324,18 @@ iPad or Mobile Style CSS
     .userProfile_blog {
         flex: 0 0 75% !important;
     }
+
+    .post-content {
+        flex: 0 0 58% !important;
+        max-width: 58% !important;
+    }
+
+    .photo-content {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+
 
 }
 
