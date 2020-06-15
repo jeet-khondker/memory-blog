@@ -2806,3 +2806,4 @@ PIL.UnidentifiedImageError: cannot identify image file <FileStorage: '' ('applic
 2020-06-14 21:32:22,331 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
 2020-06-14 21:38:56,799 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
 2020-06-14 21:44:31,501 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-15 17:48:06,346 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
