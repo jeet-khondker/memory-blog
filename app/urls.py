@@ -202,10 +202,15 @@ def new_post():
         post_title = request.form["title"]
         post_content = request.form["body"]
 
-        post_photo_file = save_post_photo(request.files["post_photo"])
+        if request.files["post_photo"]:
+            post_photo_file = save_post_photo(request.files["post_photo"])
 
-        # Storing Data in Post Model
-        new_post = Post(title = post_title, body = post_content, post_photo = post_photo_file, author = current_user)
+            # Storing Data in Post Model
+            new_post = Post(title = post_title, body = post_content, post_photo = post_photo_file, author = current_user)
+
+        else:
+            # Storing Data in Post Model
+            new_post = Post(title = post_title, body = post_content, author = current_user)
 
         # Adding in DB
         try:
@@ -227,15 +232,20 @@ def updatePost():
 
         post.title = request.form["title"]
         post.body = request.form["body"]
+
         if request.files["post_photo"]:
             post.post_photo = save_post_photo(request.files["post_photo"])
+            post_photo = url_for('static', filename = 'post_photos/' + post.post_photo)
+
         post.updated_datetime = datetime.utcnow()
 
         db.session.commit()
         flash("Post Updated Successfully!", "success")
         
-        post_photo = url_for('static', filename = 'post_photos/' + post.post_photo)
-        return redirect(url_for("dashboard", post_photo = post_photo))
+        if request.files["post_photo"]:
+            return redirect(url_for("dashboard", post_photo = post_photo))
+        else:
+            return redirect(url_for("dashboard"))
 
 # Delete Post Route
 @app.route("/deletePost/<int:id>")
