@@ -2972,3 +2972,9 @@ sqlalchemy.exc.DataError: (psycopg2.errors.StringDataRightTruncation) value too 
 [parameters: {'post_photo': '732ce531405fecff.jpeg', 'updated_datetime': datetime.datetime(2020, 6, 16, 1, 5, 31, 362267), 'MEMORYBLOG_TRANSACTION_POST_id': 8}]
 (Background on this error at: http://sqlalche.me/e/9h9h)
 2020-06-16 15:50:29,989 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:57]
+2020-06-16 17:10:29,735 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-16 17:10:39,774 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-16 17:23:55,766 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-16 17:23:59,408 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-16 19:45:08,373 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-16 19:45:17,444 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
