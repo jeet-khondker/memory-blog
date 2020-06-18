@@ -40,6 +40,8 @@
                             {% endif %}
                         {% endfor %}
                     </table>
+
+                    <!-- PAGNINATION -->
                     <div class="page">
                         {% for page_num in users.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                             {% if users.total > users.per_page %}

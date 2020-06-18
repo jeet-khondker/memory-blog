@@ -10,19 +10,26 @@ from flask_login import LoginManager, current_user, login_user, logout_user
 from flask_moment import Moment
 from flask_mail import Mail
 
+# Instantiating Flask
 app = Flask(__name__)
 
+# Declaring Configurations
 app.config.from_object(Config)
 
+# DB SQLAlchemy Initialization
 db = SQLAlchemy(app)
+
+# DB Migrate Initialization
 migrate = Migrate(app, db)
 
 login = LoginManager(app)
 login.login_view = "login"
 login.login_message_category = "info"
 
+# Date-TimeStamp Moment Initialization
 moment = Moment(app)
 
+# Mail Initialization
 mail = Mail(app)
 
 # Log Errors Via Email
@@ -58,6 +65,9 @@ if not app.debug:
 
 from app import urls, models, errors
 
+###########################
+# ADMIN VIEW FUNCTIONALITY
+###########################
 class AdminModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.email == app.config["MAIL_USERNAME"]

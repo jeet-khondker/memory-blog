@@ -25,16 +25,19 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField("Repeat Password", validators = [DataRequired(message = "Password Confirmation is required."), EqualTo("password")], render_kw = {"placeholder": "Confirm Password"})
     submit = SubmitField("Register")
 
+    # Username Validation
     def validate_username(self, username):
         user = User.query.filter_by(username = username.data).first()
         if user is not None:
             raise ValidationError("Username Already Exists! Please Use A Different Username.")
 
+    # Email Validation
     def validate_email(self, email):
         user = User.query.filter_by(email = email.data).first()
         if user is not None:
             raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
 
+    # Date Of Birth (DOB) Validation: Must Be Atleasr 10 Years Of Age To Use MemoryBlog Web APP
     def validate_dob(self, dob):
         today = date.today()
         if today.year - self.dob.data.year - ((today.month, today.day) < (self.dob.data.month, self.dob.data.day)) < 10:
@@ -51,18 +54,21 @@ class UpdateAccountForm(FlaskForm):
     photo = FileField("Profile Photo", validators = [FileAllowed(["jpg", "png"])])
     submit = SubmitField("Update Account")
 
+    # Username Validation
     def validate_username(self, username):
         if username.data != current_user.username:
             user = User.query.filter_by(username = username.data).first()
             if user is not None:
                 raise ValidationError("Username Already Exists! Please Use A Different Username.")
 
+    # Email Validation
     def validate_email(self, email):
         if email.data != current_user.email:
             user = User.query.filter_by(email = email.data).first()
             if user is not None:
                 raise ValidationError("Email Address Already Exists! Please Use A Different Email Address.")
 
+    # Date Of Birth (DOB) Validation: Must Be Atleasr 10 Years Of Age To Use MemoryBlog Web APP
     def validate_dob(self, dob):
         today = date.today()
         if today.year - self.dob.data.year - ((today.month, today.day) < (self.dob.data.month, self.dob.data.day)) < 10:
@@ -80,6 +86,7 @@ class ResetPasswordRequestForm(FlaskForm):
     email = StringField("Email", validators = [DataRequired(message = "Email Address is required."), Email()], render_kw = {"placeholder": "Email Address"})
     submit = SubmitField("Request Password Reset")
 
+    # Email Validation
     def validate_email(self, email):
         user = User.query.filter_by(email = email.data).first()
         if user is None:
@@ -90,4 +97,3 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField("Password", validators = [DataRequired(message = "Password is required.")], render_kw = {"placeholder": "Password"})
     confirm_password = PasswordField("Repeat Password", validators = [DataRequired(message = "Password Confirmation is required."), EqualTo("password")], render_kw = {"placeholder": "Confirm Password"})
     submit = SubmitField("Reset Password")
-

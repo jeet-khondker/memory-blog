@@ -13,9 +13,13 @@
                         <!-- In case Of Atleast 1 Like -->
                         {% if post.likes.count() > 0 %}
                         <small class="text-muted" data-toggle="modal" data-target="#likes{{post.id}}">&emsp;|&emsp;
+
+                            <!-- In Case Of Likes Less Than 2 But Greater Than 0 -->
                             {% if post.likes.count() < 2 %}
                                 Like&emsp;
                                 <span class="badge badge-pill badge-info">{{ post.likes.count() }}</span></small>
+                            
+                            <!-- Im Case Of Likes Greater Than 2 -->
                             {% else %}
                                 Likes&emsp;
                                 <span class="badge badge-pill badge-info">{{ post.likes.count() }}</span></small>
@@ -25,9 +29,13 @@
                         <!-- In case Of Atleast 1 Comment -->
                         {% if post.comments.count() > 0 %}
                             <small class="text-muted">&emsp;|&emsp;
+                            
+                            <!-- In Case Of Comments Less Than 2 But Greater Than 0 -->
                             {% if post.comments.count() < 2 %}
                                 Comment&emsp;
                                 <span class="badge badge-pill badge-info">{{ post.comments.count() }}</span></small>
+                            
+                            <!-- In Case Of Comments Greater Than 2 -->
                             {% else %}
                                 Comments&emsp;
                                 <span class="badge badge-pill badge-info">{{ post.comments.count() }}</span></small>
@@ -69,6 +77,7 @@
                             <img class = "img-thumbnail post_image" src="{{ url_for('static', filename = 'post_photos/' + post.post_photo) }}">
                         {% endif %}
 
+                        <!-- COMMENTS SECTION -->
                         {% if post.comments %}
                             {% if post.comments.count() > 0 %}
                                 <h4>All Comments</h4>
@@ -83,48 +92,51 @@
                             {% if post.author == current_user %}
                                 <a href="/updatePost/{{ post.id }}" class="btn col-md-3 btn-outline-primary edit_button" data-toggle="modal" data-target="#editPost{{post.id}}"><i class="fas fa-edit"></i>&emsp;Edit</a>
                                 <a onclick="playDelSound(event);" href="/deletePost/{{ post.id }}" class="btn col-md-3 btn-outline-danger delete-button"><i class="fa fa-trash" aria-hidden="true"></i>&emsp;Delete</a>
+                                
+                                <!-- If The Current User Already Liked The Post -->
                                 {% if current_user.has_liked_post(post) %}
                                     <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-3 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
+                                
+                                <!-- If The Current User Didn't Liked The Post Yet -->
                                 {% else %}
                                     <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-3 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
                                 {% endif %}
+
                                 <a href="/post/{{ post.id }}" class="btn col-md-3 btn-outline-secondary comment_button" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
 
                                 <!-- Edit Post Item Popup Dialog Box -->
-                                        <div id="editPost{{post.id}}" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                <div id="editPost{{post.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url_for('updatePost') }}" method="POST" enctype="multipart/form-data" novalidate>
+                                                    <div class="form-group">
+                                                        <label>Post Title</label>
+                                                        <input type="hidden" name="id" value="{{post.id}}">
+                                                        <input type="text" class="form-control" name="title" value="{{post.title}}">
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ url_for('updatePost') }}" method="POST" enctype="multipart/form-data" novalidate>
-                                                            <div class="form-group">
-                                                                <label>Post Title</label>
-                                                                <input type="hidden" name="id" value="{{post.id}}">
-                                                                <input type="text" class="form-control" name="title" value="{{post.title}}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Post Content</label>
-                                                                <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                Do You Want To Change Your Existing Blog Post Photo?
-                                                                <br/>
-                                                                <small class="text-muted">File must be either JPG or PNG</small>
-                                                                <input class="form-control-file" type="file" id="post_photo" name="post_photo">
-                                                            </div>
-                                                            <div class="form-group row modal-button-panel">
-                                                                <button class="btn btn-success col-md-6 " type="submit">Update Post</button>
-                                                                <button type="button" class="btn btn-danger col-md-6" data-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </form>
+                                                    <div class="form-group">
+                                                        <label>Post Content</label>
+                                                        <textarea class="form-control" name="body" style="white-space: pre-wrap;">{{post.body}}</textarea>
                                                     </div>
-                                                </div>
+                                                    <div class="form-group">
+                                                        Do You Want To Change Your Existing Blog Post Photo?
+                                                        <br/>
+                                                        <small class="text-muted">File must be either JPG or PNG</small>
+                                                        <input class="form-control-file" type="file" id="post_photo" name="post_photo">
+                                                    </div>
+                                                    <div class="form-group row modal-button-panel">
+                                                        <button class="btn btn-success col-md-6 " type="submit">Update Post</button>
+                                                        <button type="button" class="btn btn-danger col-md-6" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
-
-                                
+                                    </div>
+                                </div>
 
                                 <!-- Comment Post Popup Dialog Box -->
                                 <div id="comment{{post.id}}" class="modal fade" role="dialog">
@@ -134,6 +146,8 @@
                                                 <h4 class="text-center modal-title"><i class="fas fa-comment"></i>&emsp;Leave Your Comment</h4>
                                             </div>
                                             <div class="modal-body">
+
+                                                <!-- Comment Form -->
                                                 <form action="{{ url_for('comment', post_id = post.id) }}" method="POST">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="comment" placeholder="Comment">
@@ -142,6 +156,7 @@
                                                         <button class="btn btn-success" type="submit">Leave Comment</button>
                                                     </div>
                                                 </form>
+
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -151,11 +166,16 @@
                                 </div>
                                 
                             {% else %}
+                                
+                                <!-- If The Current User Already Liked The Post -->
                                 {% if current_user.has_liked_post(post) %}
                                     <a href="{{ url_for('like_action', post_id = post.id, action = 'unlike') }}" class="btn col-md-6 btn-outline-dark dislike-button"><i class="fas fa-thumbs-down"></i>&emsp;Unlike</a>
+                                
+                                <!-- If The Current User Didn't Liked The Post Yet -->
                                 {% else %}
                                     <a href="{{ url_for('like_action', post_id = post.id, action = 'like') }}" class="btn col-md-6 btn-outline-success like-button"><i class="far fa-thumbs-up"></i>&emsp;Like</a>
                                 {% endif %}
+
                                 <a href="/post/{{ post.id }}" class="btn col-md-6 btn-outline-secondary comment_button" data-toggle="modal" data-target="#comment{{post.id}}"><i class="fas fa-comment"></i>&emsp;Comment</a>
 
                                 <!-- Comment Post Popup Dialog Box -->
@@ -166,6 +186,8 @@
                                                 <h4 class="text-center modal-title"><i class="fas fa-comment"></i>&emsp;Leave Your Comment</h4>
                                             </div>
                                             <div class="modal-body">
+
+                                                <!-- Comment Form -->
                                                 <form action="{{ url_for('comment', post_id = post.id) }}" method="POST">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="comment" placeholder="Comment">
@@ -174,6 +196,7 @@
                                                         <button class="btn btn-success" type="submit">Leave Comment</button>
                                                     </div>
                                                 </form>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

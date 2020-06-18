@@ -167,6 +167,7 @@ iPad or Mobile Style CSS
     .news-feed {
         font-size: 1.5rem !important;
     }
+
 }
 
 /*  
@@ -301,6 +302,7 @@ iPad or Mobile Style CSS
     Device: Galaxy S5
 */
 @media (min-width: 360px) and (max-width: 360px) {
+
     .left-middle-content {
         margin-top: -20px !important;
         text-align: center !important;
@@ -497,6 +499,7 @@ iPad or Mobile Style CSS
     Device: Nexus 4
 */
 @media (min-width: 384px) and (max-width: 384px) {
+
     .left-middle-content {
         margin-top: -20px !important;
         text-align: center !important;
@@ -965,6 +968,7 @@ iPad or Mobile Style CSS
 */
 
 @media (min-width: 600px) and (max-width: 600px) {
+
     .btn {
         margin-bottom: 10px !important;
     }
@@ -972,6 +976,7 @@ iPad or Mobile Style CSS
     .follow-title {
         font-size: 2rem !important;
     }
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -1035,6 +1040,7 @@ iPad or Mobile Style CSS
 
 /* Device: Microsoft Lumia 550 */
 @media (min-width: 640px) and (max-width: 640px) {
+
     .btn {
         margin-bottom: 10px !important;
     }
@@ -1050,6 +1056,7 @@ iPad or Mobile Style CSS
     Device: Nexus 10
 */
 @media (min-width: 800px) and (max-width: 800px) {
+
     .btn {
         margin-bottom: 10px !important;
     }
@@ -1063,6 +1070,7 @@ iPad or Mobile Style CSS
         flex: 0 0 100% !important;
         max-width: 100% !important;
     }
+
 }
 
 /*  
@@ -1070,6 +1078,7 @@ iPad or Mobile Style CSS
     Device: iPad
 */
 @media (min-width: 768px) and (max-width: 991px) {
+
     .edit_button, .delete-button, .dislike-button, .like-button, .comment_button {
         flex: 0 0 100% !important;
         max-width: 100%;
@@ -1084,6 +1093,7 @@ iPad or Mobile Style CSS
         flex: 0 0 100% !important;
         max-width: 100% !important;
     }
+
 }
 
 /*  
@@ -1335,8 +1345,6 @@ iPad or Mobile Style CSS
         max-width: 100% !important;
     }
 
-
-
 }
 
 @media (min-width: 1200px) {
@@ -1363,6 +1371,7 @@ iPad or Mobile Style CSS
 
 /* Device: Laptop With MDPI Screen */
 @media (min-width: 1280px) and (max-width: 1280px) {
+
     .jumbotron {
         padding-top: 125px !important;
         max-height: 100% !important;
@@ -1380,6 +1389,5 @@ iPad or Mobile Style CSS
     .right-middle-content-register {
         margin-top: -100px !important;
     }
+
 }
-
-

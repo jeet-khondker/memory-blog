@@ -1,7 +1,9 @@
 import os
 
+# Configuration BluePrint
 class Config(object):
 
+    # FUNCTION: GETTING ENVIRONMENT VARIABLES
     def get_env_var(name):
         try:
             return os.environ[name]
@@ -9,6 +11,7 @@ class Config(object):
             message = "Expected Environment Variable '{}' Not Set!".format(name)
             raise Exception(message)
 
+    # SECRET KEY & FLASK ADMIN CONFIGURATIONS
     SECRET_KEY = os.environ.get("SECRET_KEY") or "the-quick-brown-fox-jumps-over-the-lazy-dog"
     FLASK_ADMIN_SWATCH = "yeti"
 
@@ -18,6 +21,7 @@ class Config(object):
     POSTGRES_PW = get_env_var("POSTGRES_PW")
     POSTGRES_DB = get_env_var("POSTGRES_DB")
 
+    # SQLALCHEMY DB CONFIGURATIONS
     SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://{user}:{pw}@{url}/{db}".format(user = POSTGRES_USER, pw = POSTGRES_PW, url = POSTGRES_URL, db = POSTGRES_DB)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -28,4 +32,5 @@ class Config(object):
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
+    # ADMIN EMAIL CONFIGURATION
     ADMINS = ["jeetzhkhondker@gmail.com"]

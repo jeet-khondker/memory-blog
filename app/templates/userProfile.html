@@ -12,19 +12,26 @@
                                 <div class="media-body userprofile_mediabody">
                                     <h2 class="account-heading">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h2>
 
+                                    <!-- If The User Is Following The Current User -->
                                     {% if current_user.is_authenticated and user != current_user and user.is_following(current_user) %}
                                         <span class="col-md-12 badge badge-pill badge-info text-center"><i class="fas fa-check"></i>&emsp;Following You</span>
                                     {% endif %}
 
                                     <p class="text-secondary">Email:&emsp;{{ user.email }}</p>
                                     <p class="text-secondary">Born On:&emsp;{{ user.dob.strftime("%B %d") }}</p>
+
+                                    <!-- User Last Time Access His/Her Profile -->
                                     {% if user.last_seen %}
                                         <p class="text-secondary">Last Seen On:&emsp;{{ moment(user.last_seen).format("LLL") }}</p>
                                     {% endif %}
 
                                     {% if user != current_user %}
+
+                                        <!-- If The Current User Is Not Following User -->
                                         {% if not current_user.is_following(user) %}
                                             <a href="{{ url_for('follow', username = user.username) }}" class="btn btn-block btn-primary follow"><i class="fas fa-rss"></i>&emsp;Follow</a>
+                                        
+                                        <!-- If The Current User Is Following User -->
                                         {% else %}
                                             <a href="{{ url_for('unfollow', username = user.username) }}" class="btn btn-block btn-secondary follow"><i class="fas fa-times"></i>&emsp;Unfollow</a>
                                         {% endif %}
@@ -34,6 +41,7 @@
                             </div>
                         </div>
                         
+                        <!-- User Statistics -->
                         <div class="col-md-6 blog-info">
                             <div class="data-box">
                                 <div class="col-md-12">
@@ -83,6 +91,7 @@
 
                     </div>
 
+                    <!-- Action Popup Message -->
                     {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                             
@@ -95,10 +104,10 @@
                         {% endif %}
                     {% endwith %}
 
-
-
                     <div class="col-md-12">
                         <div class="article-metadata">
+
+                            <!-- If There Are No Posts Of User -->
                             {% if posts.items|length < 1 %}
                                 <h3 class="text-center">Currently, you dont have any posts.</h3>
                             {% else %}
@@ -114,6 +123,8 @@
                                                 <p class="card-text" style="white-space: pre-wrap;">{{ post.body }}</p>
                                             </div>
                                             <div class="col-md-2 col-xs-12 photo-content">
+
+                                                <!-- If The Blog Post Has A Featured Image -->
                                                 {% if post.post_photo %}
                                                     <img class="img-thumbnail thumbnail_blog_img" src="{{ url_for('static', filename = 'post_photos/' + post.post_photo) }}">
                                                 {% endif %}
@@ -122,6 +133,8 @@
                                     </div>
                                 {% endfor %}
                             {% endif %}
+
+                            <!-- Pagination -->
                             <div class="page">
                                 {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
                                     {% if posts.total > posts.per_page %}
@@ -139,6 +152,7 @@
                                     {% endif %}
                                 {% endfor %}
                             </div>
+                            
                         </div>
                     </div>
 

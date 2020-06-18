@@ -1,8 +1,9 @@
-const greeting = document.getElementById("greeting");
-
 /************************
 * FUNCTION: SAY GREETING
  ************************/
+
+const greeting = document.getElementById("greeting");
+
 function sayGreeting() {
     if (new Date().getHours() < 10) {
         document.getElementById("greeting").innerHTML = "Good Morning ☀️";

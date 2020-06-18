@@ -2,93 +2,99 @@
 
 {% block content %}
 
-<div class="jumbotron">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-6 left-middle-content">
-              <h1 class="display-4 text-uppercase title">Memory Blog</h1>
-              <p class="lead">✅&emsp;Store Your Memories Forever</p>
-              <p class="lead">✅&emsp;See What Others Have In Their Stories</p>
-              <p class="lead">✅&emsp;Get Updates From Your Favorites</p>
-              <hr>
-              <div class="small text-center">Copyright &copy; Jeet Z. H. Khondker {{ now.year }}</div>
-          </div>
-          <div class="col-md-6 right-middle-content-register">
-              <h1 class = "text-center page-title"><i class="fas fa-user-lock"></i>&emsp;Registration</h1>
-              {% with messages = get_flashed_messages(with_categories=true) %}
-                  {% if messages %}
-                      
-                          {% for category, message in messages %}
-                              <div class="alert alert-{{ category }} text-center">
-                                  {{ message }}
-                              </div>
-                          {% endfor %}
-                      
-                  {% endif %}
-              {% endwith %}
-              <form action="" method="POST" enctype="multipart/form-data" novalidate>
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username">
-                    {% for error in form.username.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                    {% for error in form.firstname.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="middlename" placeholder="Middle Name">
-                    {% for error in form.middlename.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                    {% for error in form.lastname.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <label for="dob" class="col-form-label">Date Of Birth</label>&emsp;
-                    <input class="col-md-9 datepicker" id="dob" name="dob" type="date">
+  <div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 left-middle-content">
+                <h1 class="display-4 text-uppercase title">Memory Blog</h1>
+                <p class="lead">✅&emsp;Store Your Memories Forever</p>
+                <p class="lead">✅&emsp;See What Others Have In Their Stories</p>
+                <p class="lead">✅&emsp;Get Updates From Your Favorites</p>
+                <hr>
+
+                <!-- Footer -->
+                <div class="small text-center">Copyright &copy; Jeet Z. H. Khondker {{ now.year }}</div>
+            </div>
+
+            <!-- Registration -->
+            <div class="col-md-6 right-middle-content-register">
+                <h1 class = "text-center page-title"><i class="fas fa-user-lock"></i>&emsp;Registration</h1>
+
+                <!-- Action Based Popup Message -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} text-center">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        
+                    {% endif %}
+                {% endwith %}
+
+                <!-- Registration Form -->
+                <form action="" method="POST" enctype="multipart/form-data" novalidate>
+                  {{ form.hidden_tag() }}
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="username" placeholder="Username">
+                      {% for error in form.username.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
                   </div>
-                  {% for error in form.dob.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                  {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email Address">
-                    {% for error in form.email.errors %}
-                      <span style="color: red;">{{ error }}</span>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                      {% for error in form.firstname.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="middlename" placeholder="Middle Name">
+                      {% for error in form.middlename.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                      {% for error in form.lastname.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <label for="dob" class="col-form-label">Date Of Birth</label>&emsp;
+                      <input class="col-md-9 datepicker" id="dob" name="dob" type="date">
+                    </div>
+                    {% for error in form.dob.errors %}
+                        <span style="color: red;">{{ error }}</span>
                     {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                    {% for error in form.password.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
-                    {% for error in form.confirm_password.errors %}
-                      <span style="color: red;">{{ error }}</span>
-                    {% endfor %}
-                </div>
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-block btn-outline-info") }}
-                </div>
-            </form>
-          </div>
-      </div>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="email" placeholder="Email Address">
+                      {% for error in form.email.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" name="password" placeholder="Password">
+                      {% for error in form.password.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                      <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                      {% for error in form.confirm_password.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                  <div class="form-group">
+                      {{ form.submit(class="btn btn-block btn-outline-info") }}
+                  </div>
+              </form>
+
+            </div>
+        </div>
+    </div>
   </div>
-</div>
-
-    
-
 
 {% endblock %}
