@@ -22,7 +22,12 @@ class Config(object):
     POSTGRES_DB = get_env_var("POSTGRES_DB")
 
     # SQLALCHEMY DB CONFIGURATIONS
-    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://{user}:{pw}@{url}/{db}".format(user = POSTGRES_USER, pw = POSTGRES_PW, url = POSTGRES_URL, db = POSTGRES_DB)
+
+    # LOCAL DB CONFIGURATION
+    # SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://{user}:{pw}@{url}/{db}".format(user = POSTGRES_USER, pw = POSTGRES_PW, url = POSTGRES_URL, db = POSTGRES_DB)
+    
+    # ONLINE DB CONFIGURATION
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # EMAIL CONFIGURATION
