@@ -16,10 +16,10 @@ class Config(object):
     FLASK_ADMIN_SWATCH = "yeti"
 
     # DATABASE CONFIGURATION
-    POSTGRES_URL = get_env_var("POSTGRES_URL")
-    POSTGRES_USER = get_env_var("POSTGRES_USER")
-    POSTGRES_PW = get_env_var("POSTGRES_PW")
-    POSTGRES_DB = get_env_var("POSTGRES_DB")
+    # POSTGRES_URL = get_env_var("POSTGRES_URL")
+    # POSTGRES_USER = get_env_var("POSTGRES_USER")
+    # POSTGRES_PW = get_env_var("POSTGRES_PW")
+    # POSTGRES_DB = get_env_var("POSTGRES_DB")
 
     # SQLALCHEMY DB CONFIGURATIONS
 
