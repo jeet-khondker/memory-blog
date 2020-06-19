@@ -16,18 +16,18 @@ class Config(object):
     FLASK_ADMIN_SWATCH = "yeti"
 
     # DATABASE CONFIGURATION
-    # POSTGRES_URL = get_env_var("POSTGRES_URL")
-    # POSTGRES_USER = get_env_var("POSTGRES_USER")
-    # POSTGRES_PW = get_env_var("POSTGRES_PW")
-    # POSTGRES_DB = get_env_var("POSTGRES_DB")
+    POSTGRES_URL = get_env_var("POSTGRES_URL")
+    POSTGRES_USER = get_env_var("POSTGRES_USER")
+    POSTGRES_PW = get_env_var("POSTGRES_PW")
+    POSTGRES_DB = get_env_var("POSTGRES_DB")
 
     # SQLALCHEMY DB CONFIGURATIONS
 
     # LOCAL DB CONFIGURATION
-    # SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://{user}:{pw}@{url}/{db}".format(user = POSTGRES_USER, pw = POSTGRES_PW, url = POSTGRES_URL, db = POSTGRES_DB)
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://{user}:{pw}@{url}/{db}".format(user = POSTGRES_USER, pw = POSTGRES_PW, url = POSTGRES_URL, db = POSTGRES_DB)
     
     # ONLINE DB CONFIGURATION
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # EMAIL CONFIGURATION
