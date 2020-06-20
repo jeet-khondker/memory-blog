@@ -13,6 +13,8 @@ class Config(object):
 
     # SECRET KEY & FLASK ADMIN CONFIGURATIONS
     SECRET_KEY = os.environ.get("SECRET_KEY") or "the-quick-brown-fox-jumps-over-the-lazy-dog"
+
+    # FLASK ADMIN THEME
     FLASK_ADMIN_SWATCH = "yeti"
 
     # DATABASE CONFIGURATION
