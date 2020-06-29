@@ -2981,3 +2981,265 @@ sqlalchemy.exc.DataError: (psycopg2.errors.StringDataRightTruncation) value too 
 2020-06-19 15:51:47,272 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
 2020-06-19 19:37:46,878 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
 2020-06-20 10:55:24,299 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 20:36:14,541 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 20:47:33,108 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 20:55:00,463 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 21:01:14,255 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 21:07:53,620 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-20 21:15:18,307 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-25 11:59:47,106 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-25 12:07:37,419 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-25 12:30:08,539 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 11:36:23,594 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 11:37:51,944 ERROR: Exception on /user/jzhk [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 190, in user
+    photo_file = save_photo(form.photo.data)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 150, in save_photo
+    upload_file(f"profile-photos/{photo_filename}", app.config["FLASKS3_BUCKET_NAME"])
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 139, in upload_file
+    response = s3.upload_file(photo_filename, bucket, object_name)
+AttributeError: 's3.ServiceResource' object has no attribute 'upload_file'
+2020-06-28 11:39:55,893 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 11:40:26,537 ERROR: Exception on /user/jzhk [POST] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 190, in user
+    photo_file = save_photo(form.photo.data)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 150, in save_photo
+    upload_file(f"profile-photos/{photo_filename}", app.config["FLASKS3_BUCKET_NAME"])
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 139, in upload_file
+    response = s3.upload_file(photo_filename, bucket)
+AttributeError: 's3.ServiceResource' object has no attribute 'upload_file'
+2020-06-28 11:42:48,732 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 12:11:58,128 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 12:12:06,495 ERROR: Exception on /login [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 64, in login
+    return render_template("login.html", title = "Login", form = form)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/login.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 19, in top-level template code
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/mobile-style.css') }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_s3.py", line 151, in url_for
+    raise ValueError("FLASKS3_BUCKET_NAME not found in app configuration.")
+ValueError: FLASKS3_BUCKET_NAME not found in app configuration.
+2020-06-28 12:12:09,642 ERROR: Exception on /favicon.ico [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/werkzeug/routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/errors.py", line 14, in not_found_error
+    return render_template("404.html"), 404
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/404.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 19, in top-level template code
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/mobile-style.css') }}">
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_s3.py", line 151, in url_for
+    raise ValueError("FLASKS3_BUCKET_NAME not found in app configuration.")
+ValueError: FLASKS3_BUCKET_NAME not found in app configuration.
+2020-06-28 12:12:37,637 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 12:12:55,648 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 12:21:10,341 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 12:40:41,199 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:68]
+2020-06-28 13:42:23,443 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-28 20:09:52,545 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:00:02,559 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:00:11,221 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:07:31,210 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:07:38,923 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:43:13,993 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:43:34,039 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 35, in dashboard
+    return render_template("dashboard.html", title = "Dashboard", posts = posts, comments = comments)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 69, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 231, in block "content"
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'photo'
+2020-06-29 08:56:53,594 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 08:57:11,278 ERROR: Exception on / [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 35, in dashboard
+    return render_template("dashboard.html", title = "Dashboard", posts = posts, comments = comments)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 69, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 231, in block "content"
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'photo'
+2020-06-29 08:58:45,486 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 09:00:00,658 ERROR: Exception on /dashboard [GET] [in /Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/urls.py", line 35, in dashboard
+    return render_template("dashboard.html", title = "Dashboard", posts = posts, comments = comments)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/jeetkhondker/Projects/memoryblog/blog_env/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/layout.html", line 69, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/jeetkhondker/Projects/memoryblog/app/templates/dashboard.html", line 70, in block "content"
+    <img class="rounded-circle article-img" src="{{ url_for('static', filename = 'profile_photos/' + post.author.photo) }}">
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'photo'
+2020-06-29 09:01:52,366 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 13:57:40,633 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 14:17:42,070 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 18:47:53,862 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 18:53:36,188 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 19:27:16,171 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 19:49:12,560 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
+2020-06-29 19:50:39,655 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:64]
