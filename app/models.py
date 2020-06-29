@@ -1,4 +1,5 @@
 from datetime import datetime
+from hashlib import md5
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from time import time
 from flask_login import UserMixin
@@ -27,7 +28,6 @@ class User(UserMixin, db.Model):
     dob = db.Column(db.DateTime)
     email = db.Column(db.String(120), index = True, unique = True)
     password_hash = db.Column(db.String(128))
-    photo = db.Column(db.String(20), nullable = False, default = "default_user.jpg")
     last_seen = db.Column(db.DateTime, default = datetime.utcnow)
     posts = db.relationship("Post", backref = "author", lazy = "dynamic")
     comments = db.relationship("Comment", backref = "commentor", lazy = "dynamic")
@@ -118,6 +118,12 @@ class User(UserMixin, db.Model):
     def has_commented_post(self, post):
         return Comment.query.filter(Comment.user_id == self.id, Comment.post_id == post.id).count() > 0
 
+    # FUNCTION: DEFAULT USER AVATAR URLs
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode("utf-8")).hexdigest()
+
+        return "https://www.gravatar.com/avatar/{}?d=mp&s={}".format(digest, size)
+
 # FUNCTION: LOADING USER WITH ID
 @login.user_loader
 def load_user(id):
@@ -131,7 +137,6 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     body = db.Column(db.String(10485760))
-    post_photo = db.Column(db.String(20))
     created_datetime = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     updated_datetime = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey("MEMORYBLOG_MASTER_USER.id"), nullable = False)

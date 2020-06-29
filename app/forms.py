@@ -51,7 +51,6 @@ class UpdateAccountForm(FlaskForm):
     lastname = StringField("Last Name", validators = [DataRequired(message = "Last Name is required.")], render_kw = {"placeholder": "Last Name"})
     dob = DateField("Date Of Birth", validators = [DataRequired(message = "Date Of Birth is required.")], format = "%Y-%m-%d")
     email = StringField("Email", validators = [DataRequired(message = "Email Address is required.")], render_kw = {"placeholder": "Email Address"})
-    photo = FileField("Profile Photo", validators = [FileAllowed(["jpg", "png"])])
     submit = SubmitField("Update Account")
 
     # Username Validation
@@ -78,7 +77,6 @@ class UpdateAccountForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField("Title", validators = [DataRequired(message = "Post Title is required.")], render_kw = {"placeholder": "Post Title"})
     body = TextAreaField("Body", validators = [DataRequired(message = "Content is required.")], render_kw = {"placeholder": "Content"})
-    post_photo = FileField("Post Photo", validators = [FileAllowed(["jpg", "png"])])
     submit = SubmitField("Post")
 
 # Reset Password Request Form
