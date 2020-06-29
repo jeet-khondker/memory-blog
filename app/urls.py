@@ -1,6 +1,5 @@
 import os, secrets
 from datetime import datetime
-from PIL import Image
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -32,10 +31,8 @@ def dashboard():
 
     posts = Post.query.order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
     comments = Comment.query.order_by(Comment.timestamp.desc())
-    photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-    post_photo = url_for('static', filename = 'post_photos/' + Post.post_photo)
 
-    return render_template("dashboard.html", photo = photo, post_photo = post_photo, title = "Dashboard", posts = posts, comments = comments)
+    return render_template("dashboard.html", title = "Dashboard", posts = posts, comments = comments)
 
 # Login Route
 @app.route("/login", methods = ["GET", "POST"])
@@ -106,7 +103,7 @@ def reset_password_request():
         flash("Please check your email for the instructions to reset your password", "info")
         return redirect(url_for("login"))
 
-    return render_template("reset_password_request.html", form = form)
+    return render_template("reset_password_request.html", title = "Reset Password", form = form)
 
 # Password Reset Route
 @app.route("/reset_password/<token>", methods = ["GET", "POST"])
@@ -129,22 +126,7 @@ def reset_password(token):
         flash("Congratulations! Your password has been reset successfully.", "success")
         return redirect(url_for("login"))
 
-    return render_template("reset_password.html", form = form)
-
-# Save Photo Route
-def save_photo(form_photo):
-
-    random_hex = secrets.token_hex(8)
-    _, fileExtension = os.path.splitext(form_photo.filename)
-    photo_filename = random_hex + fileExtension
-    photo_path = os.path.join(app.root_path, "static/profile_photos", photo_filename)
-
-    output_size = (125, 125)
-    img = Image.open(form_photo)
-    img.thumbnail(output_size)
-    img.save(photo_path)
-
-    return photo_filename
+    return render_template("reset_password.html", title = "Reset Password", form = form)
 
 # Own User Account Information Route
 @app.route("/user/<string:username>", methods = ["GET", "POST"])
@@ -160,10 +142,6 @@ def user(username):
 
     if form.validate_on_submit():
 
-        if form.photo.data:
-            photo_file = save_photo(form.photo.data)
-            current_user.photo = photo_file
-
         current_user.username = form.username.data
         current_user.firstname = form.firstname.data
         current_user.middlename = form.middlename.data
@@ -174,7 +152,7 @@ def user(username):
         db.session.commit()
         flash("Your Account Has Been Successfully Updated!", "success")
 
-        return redirect(url_for("user", username = username))
+        return redirect(url_for("user", username = username, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname)))
 
     elif request.method == "GET":
 
@@ -185,31 +163,17 @@ def user(username):
         form.dob.data = current_user.dob
         form.email.data = current_user.email
 
-    photo = url_for('static', filename = 'profile_photos/' + current_user.photo)
-
-    return render_template("account.html", user = user, posts = posts, total_posts = total_posts, photo = photo, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
+    return render_template("account.html", user = user, posts = posts, total_posts = total_posts, form = form, title = "Account of {} {} {}".format(current_user.firstname, current_user.middlename, current_user.lastname))
 
 # Post Information Route - READ Route
 @app.route("/post/<int:post_id>")
+@login_required
 def post(post_id):
 
     post = Post.query.get_or_404(post_id)
     comments = Comment.query.order_by(Comment.timestamp.desc())
 
     return render_template("post.html", title = post.title, comments = comments, post = post)
-
-# Save Post Photo Route
-def save_post_photo(postForm_photo):
-
-    random_hex = secrets.token_hex(8)
-    _, fileExtension = os.path.splitext(postForm_photo.filename)
-    post_photo_filename = random_hex + fileExtension
-    post_photo_path = os.path.join(app.root_path, "static/post_photos", post_photo_filename)
-
-    postImg = Image.open(postForm_photo)
-    postImg.save(post_photo_path)
-
-    return post_photo_filename
 
 # Add A Post - CREATE Route
 @app.route("/addPost", methods = ["GET", "POST"])
@@ -222,18 +186,8 @@ def new_post():
         post_title = request.form["title"]
         post_content = request.form["body"]
 
-        # Case: Post Photo File Exist
-        if request.files["post_photo"]:
-            post_photo_file = save_post_photo(request.files["post_photo"])
-
-            # Storing Data in Post Model (Including Post Photo)
-            new_post = Post(title = post_title, body = post_content, post_photo = post_photo_file, author = current_user)
-
-        # Case: Post Photo File Doesn't Exist
-        else:
-
-            # Storing Data in Post Model (Excluding Post Photo)
-            new_post = Post(title = post_title, body = post_content, author = current_user)
+        # Storing Data in Post Model (Including Post Photo)
+        new_post = Post(title = post_title, body = post_content, author = current_user)
 
         # Adding in DB
         try:
@@ -248,6 +202,7 @@ def new_post():
 
 # Update Post - UPDATE Route
 @app.route("/updatePost", methods = ["GET", "POST"])
+@login_required
 def updatePost():
 
     if request.method == "POST":
@@ -260,26 +215,16 @@ def updatePost():
         post.title = request.form["title"]
         post.body = request.form["body"]
 
-        # Case: Post Photo File Exist
-        if request.files["post_photo"]:
-            post.post_photo = save_post_photo(request.files["post_photo"])
-            post_photo = url_for('static', filename = 'post_photos/' + post.post_photo)
-
         post.updated_datetime = datetime.utcnow()
 
         db.session.commit()
         flash("Post Updated Successfully!", "success")
         
-        # Case: Post Photo File Exist
-        if request.files["post_photo"]:
-            return redirect(url_for("dashboard", post_photo = post_photo))
-        
-        # Case: Post Photo File Doesn't Exist
-        else:
-            return redirect(url_for("dashboard"))
+        return redirect(url_for("dashboard"))
 
 # Delete Post - DELETE Route
 @app.route("/deletePost/<int:id>")
+@login_required
 def deletePost(id):
     post_to_delete = Post.query.get_or_404(id)
 
@@ -295,6 +240,7 @@ def deletePost(id):
 
 # Other User Profiles Route
 @app.route("/userProfile/<string:username>")
+@login_required
 def userProfile(username):
 
     page = request.args.get("page", 1, type = int)
@@ -302,7 +248,7 @@ def userProfile(username):
     total_posts = db.session.query(Post).filter_by(user_id = user.id).count()
     posts = Post.query.filter_by(author = user).order_by(Post.created_datetime.desc()).paginate(page = page, per_page = 5)
 
-    return render_template("userProfile.html", posts = posts, user = user, total_posts = total_posts)
+    return render_template("userProfile.html", posts = posts, user = user, total_posts = total_posts, title = "Account of {} {} {}".format(user.firstname, user.middlename, user.lastname))
 
 # Follow User Route
 @app.route("/follow/<username>")
@@ -348,6 +294,7 @@ def unfollow(username):
 
 # Followers Route
 @app.route("/followers/<username>")
+@login_required
 def followers(username):
 
     user = User.query.filter_by(username = username).first()
@@ -364,6 +311,7 @@ def followers(username):
 
 # Following Users Route
 @app.route("/followed/<username>")
+@login_required
 def followed_by(username):
 
     user = User.query.filter_by(username = username).first()
@@ -413,3 +361,8 @@ def comment(post_id):
         return redirect(url_for("dashboard"))
 
     return render_template("dashboard.html")
+
+# Help/Support Route
+@app.route("/help")
+def help():
+    return render_template("help.html", title = "Help/Support")
