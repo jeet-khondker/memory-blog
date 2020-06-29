@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-md-6 userProfile">
                             <div class="media usrProfile">
-                                <img class="rounded-circle userProfile_img" src="{{ url_for('static', filename = 'profile_photos/' + user.photo) }}">
+                                <img class="rounded-circle userProfile_img" src="{{ user.avatar(128) }}">
                                 <div class="media-body userprofile_mediabody">
                                     <h2 class="account-heading">{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h2>
 
@@ -121,13 +121,6 @@
                                                     <a class="article-title" href="{{ url_for('post', post_id = post.id) }}">{{ post.title }}</a>
                                                 </h2>
                                                 <p class="card-text" style="white-space: pre-wrap;">{{ post.body }}</p>
-                                            </div>
-                                            <div class="col-md-2 col-xs-12 photo-content">
-
-                                                <!-- If The Blog Post Has A Featured Image -->
-                                                {% if post.post_photo %}
-                                                    <img class="img-thumbnail thumbnail_blog_img" src="{{ url_for('static', filename = 'post_photos/' + post.post_photo) }}">
-                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

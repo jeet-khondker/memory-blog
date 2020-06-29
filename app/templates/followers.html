@@ -23,11 +23,11 @@
                                 <tr>
                                     <td>
                                         <a href="{{ url_for('userProfile', username = follow.user.username) }}">
-                                            <img class="rounded-circle follower-img d-block d-sm-none" src = "{{ url_for('static', filename = 'profile_photos/' + follow.user.photo) }}">
+                                            <img class="rounded-circle follower-img d-block d-sm-none" src = "{{ follow.user.avatar(128) }}">
                                             
                                             <!-- Hidden Only On Extra Small Devices -->
                                             <span class="d-none d-sm-block">
-                                                <img class="rounded-circle follower-img" src = "{{ url_for('static', filename = 'profile_photos/' + follow.user.photo) }}">
+                                                <img class="rounded-circle follower-img" src = "{{ follow.user.avatar(128) }}">
                                                 {{ follow.user.firstname }} {{ follow.user.middlename }} {{ follow.user.lastname }}
                                             </span>
                                             
