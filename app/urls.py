@@ -70,7 +70,7 @@ def logout():
     return redirect(url_for("dashboard"))
 
 # User Registration Route
-@app.route("/register", methods = ["POST", "GET"])
+@app.route("/register", methods = ["GET", "POST"])
 def register():
 
     if current_user.is_authenticated:
