@@ -34,7 +34,7 @@
                 {% endwith %}
 
                 <!-- Registration Form -->
-                <form action="" method="POST" novalidate>
+                <form action="" method="POST">
                   {{ form.hidden_tag() }}
                   <div class="form-group">
                       <input type="text" class="form-control" name="username" placeholder="Username">
@@ -90,7 +90,7 @@
                   <div class="form-group">
                       {{ form.submit(class="btn btn-block btn-outline-info") }}
                   </div>
-              </form>
+                </form>
 
             </div>
         </div>
