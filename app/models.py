@@ -42,6 +42,10 @@ class User(UserMixin, db.Model):
     # Commented Support In User Model
     commented = db.relationship("Comment", foreign_keys = "Comment.user_id", backref = "user", lazy = "dynamic")
 
+    # FUNCTION: USER MODEL REPRESENTATION
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+
     # FUNCTION: SET PASSWORD
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -119,10 +123,6 @@ class User(UserMixin, db.Model):
         digest = md5(self.email.lower().encode("utf-8")).hexdigest()
 
         return "https://www.gravatar.com/avatar/{}?d=mp&s={}".format(digest, size)
-
-    # FUNCTION: USER MODEL REPRESENTATION
-    def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.photo}')"
 
 # FUNCTION: LOADING USER WITH ID
 @login.user_loader
