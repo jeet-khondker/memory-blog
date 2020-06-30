@@ -5,7 +5,7 @@ To setup the profile picture, users are requested to check the "Help" page of th
 
 URL: https://memoryblog.herokuapp.com/
 
-![Screenshot](Screenshot.png)
+![Screenshot](ScreenShot.png)
 
 ## Technology Used
 Python 🐍 (Flask Framework), HTML5, CSS3, Bootstrap, Javascript
