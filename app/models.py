@@ -44,7 +44,7 @@ class User(UserMixin, db.Model):
 
     # FUNCTION: USER MODEL REPRESENTATION
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+        return "<User {}>".format(self.username)
 
     # FUNCTION: SET PASSWORD
     def set_password(self, password):
