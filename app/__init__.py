@@ -26,11 +26,13 @@ login = LoginManager(app)
 login.login_view = "login"
 login.login_message_category = "info"
 
+# Mail Initialization
+mail = Mail(app)
+
 # Date-TimeStamp Moment Initialization
 moment = Moment(app)
 
-# Mail Initialization
-mail = Mail(app)
+from app import urls, models, errors
 
 # Log Errors Via Email
 if not app.debug:
@@ -62,8 +64,6 @@ if not app.debug:
 
         app.logger.setLevel(logging.INFO)
         app.logger.info("MemoryBlog StartUp")
-
-from app import urls, models, errors
 
 ###########################
 # ADMIN VIEW FUNCTIONALITY
