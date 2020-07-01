@@ -9,6 +9,8 @@ from app.models import User, Post, Comment
 from app.email import send_password_reset_email
 from flask_mail import Message
 
+import logging
+
 # When User Becomes Authenticated, Track The TimeStamp For Last Seen On Profile
 @app.before_request
 def before_request():
@@ -81,7 +83,10 @@ def register():
     if form.validate_on_submit():
         user = User(username = form.username.data, email = form.email.data, firstname = form.firstname.data, middlename = form.middlename.data, lastname = form.lastname.data, dob = form.dob.data.strftime("%Y-%m-%d"))
         user.set_password(form.password.data)
+        print(app.config["SQLALCHEMY_DATABASE_URI"])
+        print(logging.debug())
         db.session.add(user)
+        print(logging.debug())
         db.session.commit()
         flash("Congratulations! You are now a registered user.", "success")
         return redirect(url_for("login"))

@@ -3253,3 +3253,4 @@ jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'pho
 2020-06-30 21:56:49,734 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:66]
 2020-06-30 23:14:21,500 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:66]
 2020-06-30 23:14:28,385 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:66]
+2020-06-30 23:29:17,831 INFO: MemoryBlog StartUp [in /Users/jeetkhondker/Projects/memoryblog/app/__init__.py:66]
