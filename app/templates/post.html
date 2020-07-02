@@ -55,7 +55,7 @@
                                             {% if post.likes.count() > 0 %}
                                                 {% for like in post.likes %}
                                                     <p>
-                                                        <img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + like.user.photo) }}">
+                                                        <img class="rounded-circle comment-img" src="{{ like.user.avatar(128) }}">
                                                         <a href="{{ url_for('userProfile', username = like.user.username) }}">{{ like.user.firstname }} {{ like.user.middlename }} {{ like.user.lastname }}</a>
                                                     </p>
                                                 {% endfor %}
@@ -80,7 +80,7 @@
                                 <h4>All Comments</h4>
                                 <hr>
                                 {% for comment in post.comments %}
-                                    <p><img class="rounded-circle comment-img" src="{{ url_for('static', filename = 'profile_photos/' + comment.commentor.photo) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented {{ moment(comment.timestamp).fromNow() }} : </small>{{ comment.text }}</p>
+                                    <p><img class="rounded-circle comment-img" src="{{ comment.commentor.avatar(128) }}"><a href="{{ url_for('userProfile', username = comment.commentor.username) }}">{{ comment.commentor.firstname }} {{ comment.commentor.middlename }} {{ comment.commentor.lastname }}</a> <small class="text-muted">commented {{ moment(comment.timestamp).fromNow() }} : </small>{{ comment.text }}</p>
                                 {% endfor %}
                             {% endif %}
                         {% endif %}
@@ -109,7 +109,7 @@
                                                 <h4 class="text-center modal-title"><i class="fas fa-edit"></i>&emsp;Edit Post</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ url_for('updatePost') }}" method="POST" enctype="multipart/form-data" novalidate>
+                                                <form action="{{ url_for('updatePost') }}" method="POST" novalidate>
                                                     <div class="form-group">
                                                         <label>Post Title</label>
                                                         <input type="hidden" name="id" value="{{post.id}}">
